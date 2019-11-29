@@ -2,6 +2,6 @@
 Mobile Application Development Final Project
 With HandongSAM Corporation
 
-## CONTRIBUTORS:
+# CONTRIBUTORS:
   21400022 Younhong Ko, Handong Global University Majoring in Advanced Computer Engineering
   
