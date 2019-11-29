@@ -545,8 +545,7 @@ class HomeState extends State<HomePage> {
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  width: 170,
-                                  padding: EdgeInsets.only(top: 30, left: 90),
+                                  padding: EdgeInsets.only(top: 30, left: 100),
                                   child: FlatButton(
                                       child: Text('Cancel', style: TextStyle(color: Colors.blue)),
                                       onPressed: () {
