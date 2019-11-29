@@ -26,16 +26,16 @@ Used Pie Chart, Bar Chart, Percentage Chart and Gauge Chart.
 > After survey, stress value, count of how many days he/she drank, sum of hours of sleep, sum of values of dump status, string arrays of morning, lunch, dinner, stress value, defecation feeling, number of defecation.
 
 # Versions
-> 1.0: Connecting to database system and visualize it to graph, chart using plugins.
+* 1.0: Connecting to database system and visualize it to graph, chart using plugins.
 
-> 2.0:
+* 2.0:
 
   1. ML-kit: If user uploads image through image picker, program will be able to recognize the letter written, and if the picture has word "With-Water" then it will return yes. If not, it wil return false
   2. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 2.0
   3. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to have real alarm Notification.
 
->3.0:
-1. 
+* 3.0:
+  1. 
 
 # CONTRIBUTORS:
 * 21400022 Younhong Ko
