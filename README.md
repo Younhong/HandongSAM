@@ -4,6 +4,9 @@
 # Introduction of this Project
 * This Project is develeoped with cooperation with HandongSAM Corporation. With the requirements given from Mobile Application Development and HandongSAM Corporation, HandongSAM Project worked to fulfill those requirments as first priority. 
 
+1. Mobile Application Development Requirements: Try to use what we have learned in classes. One of functions that has to be used is to connect with firebase database system. And with connection to database system, we need to use login system with one of google, anonymous or whatever else.
+2. HandongSAM Requirments: User-friendly Application. Try to develop Application that user can easily approach. It is not recommended to use lot of texts. There has to be diary system and alarm system. And result of diary has to be visualized so that user can feel something from it.
+
 # Language and Framework and Database System Used
 * Language: Dart Language
 * Framework: Flutter: Cross-Platform Framework that supports multiple Operating System includes Android, IOS and even Web.
