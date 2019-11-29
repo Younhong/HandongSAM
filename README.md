@@ -4,8 +4,8 @@
 # Introduction of this Project
 * This Project is developed with cooperation with HandongSAM Corporation. With the requirements given from Mobile Application Development(Professor SungBae Jo) and HandongSAM Corporation, HandongSAM Project worked to fulfill those requirments as first priority. 
 
-1. Mobile Application Development Requirements: Try to use what we have learned in classes. One of functions that had to be used is to connect with firebase database system. And with connection to database system, we need to be able to use login system with one of google, anonymous or whatever else.
-2. HandongSAM Requirments: User-friendly Application. Try to develop Application that user can easily approach. It is not recommended to use lot of texts. Instead try to fill the page with images or graphs or any other visual effects. It is very important to have diary system and alarm system implemented. And results of diary has to be visualized so that user can feel something from it.
+  1. Mobile Application Development Requirements: Try to use what we have learned in classes. One of functions that had to be used is to connect with firebase database system. And with connection to database system, we need to be able to use login system with one of google, anonymous or whatever else.
+  2. HandongSAM Requirments: User-friendly Application. Try to develop Application that user can easily approach. It is not recommended to use lot of texts. Instead try to fill the page with images or graphs or any other visual effects. It is very important to have diary system and alarm system implemented. And results of diary has to be visualized so that user can feel something from it.
 
 # Design Tools, Language, Framework and Database System Used
 * Programming Language: Dart Language
@@ -29,9 +29,9 @@ Used Pie Chart, Bar Chart, Percentage Chart and Gauge Chart.
 > 1.0: Connecting to database system and visualize it to graph, chart using plugins.
 
 > 2.0:
-1. ML-kit: If user uploads image through image picker, program will be able to recognize the letter written, and if the picture has word "With-Water" then it will return yes. If not, it wil return false
-2. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 2.0
-3. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to have real alarm Notification.
+  1. ML-kit: If user uploads image through image picker, program will be able to recognize the letter written, and if the picture has word "With-Water" then it will return yes. If not, it wil return false
+  2. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 2.0
+  3. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to have real alarm Notification.
 
 >3.0:
 1. 
