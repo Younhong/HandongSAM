@@ -1,2 +1,3 @@
 # HandongSAM_Project
-Project with HandongSAM Corporation
+Mobile Application Development Final Project
+With HandongSAM Corporation
