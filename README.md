@@ -11,6 +11,7 @@
 * Language: Dart Language
 * Framework: Flutter: Cross-Platform Framework that supports multiple Operating System includes Android, IOS and even Web.
 * Database: Firebase
+* Design: [Figma] (https://www.figma.com/file/oBZGN83OtTHKzI1Tt4epOx/HandongSAM)
 
 # Main Functions
 * Alarm System
