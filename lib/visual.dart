@@ -115,27 +115,24 @@ class VisualState extends State<VisualPage> {
                         child: Text("현재 출석일", style: TextStyle(fontSize: 20, color: Colors.indigo),),
                       ),
                       SizedBox(height: 10),
-                      new CircularPercentIndicator(
-                        radius: 250.0,
-                        animation: true,
-                        animationDuration: 1200,
-                        lineWidth: 10.0,
-                        percent: record.countDay/14,
-                        center: new Text(
-                          "${(record.countDay/14 * 100).round()}%",
-                          style:
-                          new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                        ),
-                        backgroundColor: Colors.grey,
-                        progressColor: Colors.indigo,
-                        circularStrokeCap: CircularStrokeCap.round,
-                      ),
-                      SizedBox(height: 10),
                       Container(
                         alignment: Alignment.center,
                         child: Column(
-                          children: <Widget>[
-                            Text("현재까지 ${record.countDay}일 출석했습니다"),
+                          children: <Widget>[CircularPercentIndicator(
+                            radius: 250.0,
+                            animation: true,
+                            animationDuration: 1200,
+                            lineWidth: 10.0,
+                            percent: record.countDay/14,
+                            center: new Text(
+                              "${record.countDay}일" + "(${(record.countDay/14 * 100).round()}%)",
+                              style:
+                              new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                            ),
+                            backgroundColor: Colors.grey,
+                            progressColor: Colors.indigo,
+                            circularStrokeCap: CircularStrokeCap.round,
+                          ),
                           ],
                         ),
                       ),
@@ -296,7 +293,7 @@ class VisualState extends State<VisualPage> {
                       ),
                       SizedBox(height: 10),
                       Padding(
-                        padding: EdgeInsets.all(15.0),
+                        padding: EdgeInsets.only(left: 15, right: 15),
                         child: new LinearPercentIndicator(
                           width: MediaQuery.of(context).size.width - 50,
                           animation: true,
@@ -359,7 +356,7 @@ class VisualState extends State<VisualPage> {
                       SizedBox(height: 10),
                       Container(
                         alignment: Alignment.center,
-                        child: Text("            각 항목의 비율이 균형있게 나누어져\n      원형 무지개의 색상에 근접할수록 좋습니다.\n(1번 항목은 다른 항목에 비해 낮아도 괜찮습니다.)"),
+                        child: Text("각 항목의 비율이 균등할 수록 좋습니다."),
                       ),
                       SizedBox(height: 10),
                     ],
@@ -372,7 +369,7 @@ class VisualState extends State<VisualPage> {
                     children: <Widget>[
                       SizedBox(height: 10),
                       Container(
-                        child: Text("유산균 섭취 일수", style: TextStyle(fontSize: 20, color: Colors.indigo),),
+                        child: Text("유산균 섭취 횟수", style: TextStyle(fontSize: 20, color: Colors.indigo),),
                       ),
                       SizedBox(height: 10),
                       Container(
@@ -389,9 +386,6 @@ class VisualState extends State<VisualPage> {
                         ),
                       ),
                       SizedBox(height: 10,),
-                      Container(
-                        child: Text('${record.countDay-record.bioEat}회 유산균 섭취하지 않으셨네요')
-                      ),
                       Container(
                           child: Text('유산균 섭취는 꾸준하게 하는 것이 중요합니다.')
                       ),
