@@ -35,6 +35,7 @@ Used Pie Chart, Bar Chart, Percentage Chart and Gauge Chart.
   3. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to have real alarm Notification.
 
 * 3.0:
+
   1. 
 
 # CONTRIBUTORS:
