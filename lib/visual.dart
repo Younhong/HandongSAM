@@ -303,7 +303,7 @@ class VisualState extends State<VisualPage> {
                           lineHeight: 20.0,
                           animationDuration: 2000,
                           percent: sleepAverage/12,
-                          center: Text("평균 " + sleepAverage.round().toString()+"시간 수면 취함"),
+                          center: Text("평균 " + sleepAverage.round().toString()+"시간"),
                           linearStrokeCap: LinearStrokeCap.roundAll,
                           progressColor: (sleepAverage.round()) >= 7 ? Colors.greenAccent : Colors.red,
                         ),
