@@ -30,13 +30,13 @@ Used Pie Chart, Bar Chart, Percentage Chart and Gauge Chart.
 
 * 2.0:
 
-  1. ML-kit: If user uploads image through image picker, program will be able to recognize the letter written, and if the picture has word "With-Water" then it will return yes. If not, it wil return false
-  2. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 2.0
-  3. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to have real alarm Notification.
+  1. Real-time countday: Currently, countday variable changes only when user submits survey results. From ver 2.0, countday variable should increase everyday, even if user did not submit survey result. And if countday reaches 14, it stops increasing.
+  2. ML-kit: If user uploads image through image picker, image will be stored on firebase storage, and if the image has the word "With water", then it will return 1, else return 0. After return, it will be stored in string array named ml. On Final result, it will be displayed in visual.dart page with percentage of how many times the user has eaten bio-food.
+  4. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to have real alarm Notification.
 
 * 3.0:
 
-  1. 
+  1. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 2.0
 
 # CONTRIBUTORS:
 * 21400022 Younhong Ko
