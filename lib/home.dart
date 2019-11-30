@@ -433,7 +433,7 @@ class HomeState extends State<HomePage> {
                   }
                   else Navigator.push(context, MaterialPageRoute(builder: (context) => DiaryPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: record2)));
                 }
-                else if (record2.countDay == 14) {
+                else if (record2.countDay >= 14) {
                   showDialog<void>(
                     context: context,
                     barrierDismissible: false, // user must tap button!

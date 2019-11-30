@@ -57,7 +57,6 @@ class _GoogleSignInSectionState extends State<_GoogleSignInSection> {
           width: 360,
           child: FlatButton(
             onPressed: () async {
-
               final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
               final GoogleSignInAuthentication googleAuth =
               await googleUser.authentication;
