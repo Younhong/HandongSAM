@@ -30,9 +30,9 @@ Used Pie Chart, Bar Chart, Percentage Chart and Gauge Chart.
 
 * 2.0:
 
-  1. Real-time countday: Currently, countday variable changes only when user submits survey results. From ver 2.0, countday variable should increase everyday, even if user did not submit survey result. And if countday reaches 14, it stops increasing.
+  1. Real-time count day: Currently, countday variable changes only when user submits survey result. From ver 2.0, countday variable should increase when the day changes, even if user did not submit survey result. And if countday reaches 14, it stops increasing.
   2. ML-kit: If user uploads image through image picker, image will be stored on firebase storage, and if the image has the word "With water", then it will return 1, else return 0. After return, it will be stored in string array named ml. On Final result, it will be displayed in visual.dart page with percentage of how many times the user has eaten bio-food.
-  4. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to have real alarm Notification.
+  4. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to get real alarm Notification.
 
 * 3.0:
 
