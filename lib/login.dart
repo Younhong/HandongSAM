@@ -81,7 +81,6 @@ class _GoogleSignInSectionState extends State<_GoogleSignInSection> {
                 }
               });
               final snapshot = await Firestore.instance.collection("Daily_Record").document(userID).get();
-              // 첫 로그인
               if (snapshot == null || !snapshot.exists) {
                 Firestore.instance.collection("Daily_Record").document(userID).setData({"stressValue": "", "drink": 0, "sleep": 0,
                   "morning": "", "lunch": "", "dinner": "",
@@ -90,7 +89,6 @@ class _GoogleSignInSectionState extends State<_GoogleSignInSection> {
                 });
                 Navigator.push(context, MaterialPageRoute(builder: (context) => AlarmPage(userID: userID, email: email, url: url)));
               }
-              // 두번째 로그인부터
               else {
                 DailyRecord dailyRecord = DailyRecord.fromSnapshot(snapshot);
                 Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url, alarmTime: dailyRecord.alarmTime.toDate(),)));

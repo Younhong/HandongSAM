@@ -3,7 +3,6 @@ import 'home.dart';
 import 'login.dart';
 
 class ShrineApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
