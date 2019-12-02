@@ -26,7 +26,12 @@ Used Pie Chart, Bar Chart, Percentage Chart and Gauge Chart.
 > After survey, stress value, count of how many days he/she drank, sum of hours of sleep, sum of values of dump status, string arrays of morning, lunch, dinner, stress value, defecation feeling, number of defecation.
 
 # Versions
-* 1.0: Connecting to database system and visualize it to graph, chart using plugins.
+* 1.0:
+
+  1. Connecting to Database System
+  2. Survey using Slider, Radio Buttons.
+  3. Setting alarm time using flutter_time_picker_spinner plugin.
+  4. Visualize survey results using Bar Chart, Percentage Chart, Gauge Chart, Pie Chart using pie_chart, fl_chart, percent_indicator plugins.
 
 * 2.0:
 
