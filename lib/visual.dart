@@ -129,7 +129,7 @@ class VisualState extends State<VisualPage> {
                         child: Row(
                           children: <Widget>[
                             if (record.countDay == 14)
-                              Icon(Icons.error, color: Colors.red,),
+                              Icon(Icons.notification_important, color: Colors.red,),
                             if (record.countDay == 14)
                               Text(' ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13}일 초과하였습니다', style: TextStyle(color: Colors.red),),
                           ],
