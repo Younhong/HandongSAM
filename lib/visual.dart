@@ -116,6 +116,27 @@ class VisualState extends State<VisualPage> {
                       ),
                       SizedBox(height: 10),
                       Container(
+                        padding: EdgeInsets.only(left: 80),
+                        child: Row(
+                          children: <Widget>[
+                            if (record.countDay == 14)
+                              Text('설문조사를 마치기까지 ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays+1}일 걸렸습니다', style: TextStyle(color: Colors.red),),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 130),
+                        child: Row(
+                          children: <Widget>[
+                            if (record.countDay == 14)
+                              Icon(Icons.error, color: Colors.red,),
+                            if (record.countDay == 14)
+                              Text(' ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13}일 초과하였습니다', style: TextStyle(color: Colors.red),),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
                         alignment: Alignment.center,
                         child: Column(
                           children: <Widget>[CircularPercentIndicator(

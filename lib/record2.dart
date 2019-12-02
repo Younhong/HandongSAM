@@ -12,6 +12,8 @@ class DailyRecord {
   final Timestamp alarmTime;
   final Timestamp submitTime;
   final DocumentReference reference;
+  final Timestamp initialTme;
+  final Timestamp lastSubmitTime;
 
   DailyRecord.fromMap(Map<String, dynamic> map, {this.reference}):
         submitTime = map['submitTime'],
@@ -26,7 +28,9 @@ class DailyRecord {
         dumpStatus = map['dumpStatus'],
         dumpCount = map['dumpCount'],
         countDay = map['countDay'],
-        alarmTime =  map['alarmTime'];
+        alarmTime =  map['alarmTime'],
+        initialTme = map['initialTime'],
+        lastSubmitTime = map['lastSubmitTime'];
 
   DailyRecord.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);

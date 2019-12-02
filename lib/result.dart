@@ -264,6 +264,16 @@ class _ResultPageState extends State<ResultPage> {
                   child: Text("Submit", style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
                 ),
                 onPressed: () {
+                  if (record.countDay == 0) {
+                    record.reference.updateData({
+                      "initialTime": DateTime.now(),
+                    });
+                  }
+                  else if (record.countDay == 13) {
+                    record.reference.updateData({
+                      "lastSubmitTime": DateTime.now(),
+                    });
+                  }
                   record.reference.updateData({
                     "stressValue": record.stressValue + stressValue,
                     "drink": FieldValue.increment(int.parse(drink)),
