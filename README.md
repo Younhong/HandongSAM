@@ -33,12 +33,10 @@ Used Pie Chart, Bar Chart, Percentage Chart and Gauge Chart.
   4. Visualize survey results using Bar Chart, Percentage Chart, Gauge Chart, Pie Chart using pie_chart, fl_chart, percent_indicator plugins.
 
 * 2.0:
-
   1. ML-kit: If user uploads image through image picker, image will be stored on firebase storage, and if the image has the word "With water", then it will return 1, else return 0. After return, it will be stored in string array named ml. On Final result, it will be displayed in visual.dart page with percentage of how many times the user has eaten bio-food.
   2. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to get real alarm Notification.
 
 * 3.0:
-
   1. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 2.0
 
 # CONTRIBUTORS:
