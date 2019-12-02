@@ -27,7 +27,7 @@ Used Pie Chart, Bar Chart, Percentage Chart and Gauge Chart.
 
 # Versions
 * 1.0:
-  1. Connecting to Database System
+  1. Manage all the user data using Firebase Database System.
   2. Survey using Slider, Radio Buttons.
   3. Setting alarm time using flutter_time_picker_spinner plugin.
   4. Visualize survey results using Bar Chart, Percentage Chart, Gauge Chart, Pie Chart using pie_chart, fl_chart, percent_indicator plugins.
