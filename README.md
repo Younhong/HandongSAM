@@ -19,8 +19,8 @@
 * Visualization Techniques (Pie chart, Bar chart, Percentage Gauge)
 
 # What is stored in Firebase Database System?
-> In Firebase database system, databse named "Daily_Record" is given. When you first login, 'login.dart' file will create new document with user's id.
-> In Document, it will store alarm time which user will select when he/she will choose, variables for counting how many surveys user have completed, submitted time of survey confirmed, and all the answers of surveys,
+> In Firebase database system, databse named "Daily_Record" is given. When you first login, 'login.dart' file will create new document with user's id.<br>
+> In Document, it will store alarm time which user will select when he/she will choose, variables for counting how many surveys user have completed, submitted time of survey confirmed, and all the answers of surveys,<br>
 > After survey, stress value, count of how many days he/she drank, sum of hours of sleep, sum of values of dump status, string arrays of morning, lunch, dinner, stress value, defecation feeling, number of defecation.
 
 # Versions
