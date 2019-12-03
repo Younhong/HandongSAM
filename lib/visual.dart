@@ -119,7 +119,7 @@ class VisualState extends State<VisualPage> {
                         padding: EdgeInsets.only(left: 80),
                         child: Row(
                           children: <Widget>[
-                            if (record.countDay == 14)
+                            if (record.countDay == 14  && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
                               Text('설문조사를 마치기까지 ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays+1}일 걸렸습니다', style: TextStyle(color: Colors.red),),
                           ],
                         ),
@@ -128,9 +128,9 @@ class VisualState extends State<VisualPage> {
                         padding: EdgeInsets.only(left: 130),
                         child: Row(
                           children: <Widget>[
-                            if (record.countDay == 14)
+                            if (record.countDay == 14 && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
                               Icon(Icons.notification_important, color: Colors.red,),
-                            if (record.countDay == 14)
+                            if (record.countDay == 14 && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
                               Text(' ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13}일 초과하였습니다', style: TextStyle(color: Colors.red),),
                           ],
                         ),
@@ -156,6 +156,37 @@ class VisualState extends State<VisualPage> {
                           ),
                           ],
                         ),
+                      ),
+                      SizedBox(height: 10),
+                    ],
+                  ),
+                ),
+                // Bio Eat Card
+                Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 10),
+                      Container(
+                        child: Text("유산균 섭취 횟수", style: TextStyle(fontSize: 20, color: Colors.indigo),),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        padding: EdgeInsets.only(left: 30),
+                        child: Row(
+                          children: <Widget>[
+                            for (int i = 0; i < record.bioEat; i++)
+                              Icon(Icons.sentiment_very_satisfied, color: Colors.blue,),
+                            for (int i = 0; i < record.countDay - record.bioEat; i++)
+                              Icon(Icons.sentiment_very_dissatisfied, color: Colors.red,),
+                            for (int i = 0; i < 14 - record.countDay; i++)
+                              Icon(Icons.sentiment_very_dissatisfied)
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(
+                          child: Text('유산균 섭취는 꾸준하게 하는 것이 중요합니다.')
                       ),
                       SizedBox(height: 10),
                     ],
@@ -378,37 +409,6 @@ class VisualState extends State<VisualPage> {
                       Container(
                         alignment: Alignment.center,
                         child: Text("각 항목의 비율이 균등할 수록 좋습니다."),
-                      ),
-                      SizedBox(height: 10),
-                    ],
-                  ),
-                ),
-                // Bio Eat Card
-                Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 10),
-                      Container(
-                        child: Text("유산균 섭취 횟수", style: TextStyle(fontSize: 20, color: Colors.indigo),),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        padding: EdgeInsets.only(left: 30),
-                        child: Row(
-                          children: <Widget>[
-                            for (int i = 0; i < record.bioEat; i++)
-                              Icon(Icons.sentiment_very_satisfied, color: Colors.blue,),
-                            for (int i = 0; i < record.countDay - record.bioEat; i++)
-                              Icon(Icons.sentiment_very_dissatisfied, color: Colors.red,),
-                            for (int i = 0; i < 14 - record.countDay; i++)
-                              Icon(Icons.sentiment_very_dissatisfied)
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10,),
-                      Container(
-                          child: Text('유산균 섭취는 꾸준하게 하는 것이 중요합니다.')
                       ),
                       SizedBox(height: 10),
                     ],
