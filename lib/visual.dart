@@ -139,22 +139,22 @@ class VisualState extends State<VisualPage> {
                       Container(
                         alignment: Alignment.center,
                         child: Column(
-                          children: <Widget>[CircularPercentIndicator(
-                            radius: 250.0,
-                            animation: true,
-                            animationDuration: 1200,
-                            lineWidth: 10.0,
-                            percent: record.countDay/14,
-                            center: new Text(
-                              "${record.countDay}일" + "(${(record.countDay/14 * 100).round()}%)",
-                              style:
-                              new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                            ),
-                            backgroundColor: Colors.grey,
-                            progressColor: Colors.indigo,
-                            circularStrokeCap: CircularStrokeCap.round,
-                          ),
-                          ],
+                          children: <Widget>[
+                            CircularPercentIndicator(
+                              radius: 250.0,
+                              animation: true,
+                              animationDuration: 1200,
+                              lineWidth: 10.0,
+                              percent: record.countDay/14,
+                              center: new Text(
+                                "${record.countDay}일" + "(${(record.countDay/14 * 100).round()}%)",
+                                style:
+                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                              ),
+                              backgroundColor: Colors.grey,
+                              progressColor: Colors.indigo,
+                              circularStrokeCap: CircularStrokeCap.round,
+                          ),],
                         ),
                       ),
                       SizedBox(height: 10),

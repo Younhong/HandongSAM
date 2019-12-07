@@ -42,7 +42,7 @@ class _ResultPageState extends State<ResultPage> {
     else {
       _eat = "No";
     }
-    
+
     String timeMatch = "";
 
     if (record.alarmTime.toDate().difference(eatenHour).inHours%24 > 1) {
