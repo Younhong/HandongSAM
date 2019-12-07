@@ -42,9 +42,10 @@ class _ResultPageState extends State<ResultPage> {
     else {
       _eat = "No";
     }
-    int difference = int.parse(alarmTime.hour.toString()) - int.parse(eatenHour.hour.toString());
+    
     String timeMatch = "";
-    if (difference > 1 || difference < -1) {
+
+    if (record.alarmTime.toDate().difference(eatenHour).inHours%24 > 1) {
       timeMatch = "시간 꼭 지켜주세요";
     }
     else {
@@ -75,7 +76,7 @@ class _ResultPageState extends State<ResultPage> {
     else if(dinner == "6") { _dinner = "지방"; }
     else { _dinner = "단백질"; }
 
-      String title = (record.countDay+1).toString() + "일차 설문조사 결과";
+    String title = (record.countDay+1).toString() + "일차 설문조사 결과";
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.indigo,
