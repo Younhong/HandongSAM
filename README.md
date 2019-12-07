@@ -41,5 +41,5 @@
 Youtube Link: https://youtu.be/MEChtYI61Yg
 
 # CONTRIBUTORS:
-* 21400022 Younhong Ko
-* 21500802 Youngjun Hong
+* Younhong Ko
+* Youngjun Hong
