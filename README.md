@@ -34,7 +34,8 @@
   2. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to get real alarm Notification.
 
 * 3.0:
-  1. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 2.0
+  1. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 3.0
+  2. Real Market System: Currently, if you press 'Buy' Button, it just moves on to the HandongSAM Web Page, but from ver 3.0, you will be able to buy products without moving to handongSAM webpage, but buy in mobile application.
   
 # Demonstration Video
 Youtube Link: https://youtu.be/21eHLPYtOSg
