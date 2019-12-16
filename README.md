@@ -32,6 +32,11 @@
 * 2.0:
   1. ML-kit: If user uploads image through image picker, image will be stored on firebase storage, and if the image has the word "With water", then it will return 1, else return 0. After return, it will be stored in string array named ml. On Final result, it will be displayed in visual.dart page with percentage of how many times the user has eaten bio-food.
   2. Alarm Notification: On version 1.0, it is only possible to set and manage alarm time. From ver 2.0, you will be able to get real alarm Notification.
+  3. Preserve data on Reset: Currently, if user wants to restart diary, all the survey result becomes initalized. From version 2.0, it will be modified as follows.
+    > Create sub-collection on each user's document and name it 'Diary_Result'.
+    > When the user logins for the first time, new variable named DiaryCount will be stored.
+    > Every time the user submits diary, DiaryCount will be incremented by 1.
+    > After submit, new Document, which will be named by the value of DiaryCount, will be created at 'Diary_Result' and all the survey results be stored in that document.
 
 * 3.0:
   1. Kakaotalk Login: Login with kakaotalk. Since kakaotalk is one of the best application that is being used by people, kakaotalk login will be supported from 3.0
