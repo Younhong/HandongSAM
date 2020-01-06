@@ -87,7 +87,8 @@ class _ResultPageState extends State<ResultPage> {
           ),
         ),
         body: ListView(
-          children: <Widget>[GridView.count(
+          children: <Widget>[
+            GridView.count(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             primary: false,
