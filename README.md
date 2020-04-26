@@ -9,9 +9,9 @@
 
 # Design Tools, Language, Framework and Database System Used
 * Programming Language: Dart Language
-* Framework: Flutter: Cross-Platform Framework that supports multiple Operating System includes Android, IOS and even Web.
+* Framework: Flutter
 * Database System: Firebase Database System
-* Design Tools: Figma: https://www.figma.com/file/oBZGN83OtTHKzI1Tt4epOx/HandongSAM
+* Design Tools: Figma -> [Clck Here] [https://www.figma.com/file/oBZGN83OtTHKzI1Tt4epOx/HandongSAM]
 
 # Main Functions
 * Alarm System (Notification for version 2.0)
