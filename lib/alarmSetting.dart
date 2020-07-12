@@ -64,11 +64,18 @@ class _AlarmPageState extends State<AlarmPage> {
                           Colors.indigo,
                         ],
                       ),),
-                    child: Text("저장", style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                    child: Text("저장",
+                      style: TextStyle(
+                          color: Colors.white),
+                      textAlign: TextAlign.center,),
                   ),
                   onPressed: () {
-                    Firestore.instance.collection("Daily_Record").document(userID).updateData({"alarmTime": _dateTime,});
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url, alarmTime: _dateTime,)),
+                    Firestore.instance.collection("Daily_Record")
+                        .document(userID).updateData({"alarmTime": _dateTime,});
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>
+                          HomePage(userID: userID, email: email,
+                            url: url, alarmTime: _dateTime,)),
                     );}
               ),),
           ],

@@ -25,9 +25,12 @@ class SignInPageState extends State<SignInPage> {
             SizedBox(height: 180.0),
             Column(
               children: <Widget>[
-                Image.network('https://firebasestorage.googleapis.com/v0/b/final-exam-de688.appspot.com/o/hslogo.png?alt=media&token=95757f58-f5eb-4f42-b285-3bdebe5c16c7', height: 100),
+                Image.network(
+                    'https://firebasestorage.googleapis.com/v0/b/final-exam-de688.appspot.com/o/hslogo.png?alt=media&token=95757f58-f5eb-4f42-b285-3bdebe5c16c7',
+                    height: 100),
                 SizedBox(height: 15),
-                Text("HandongSAM", style: TextStyle(fontSize: 30))
+                Text("HandongSAM",
+                    style: TextStyle(fontSize: 30))
               ],
             ),
             SizedBox(height: 75.0),
@@ -58,8 +61,7 @@ class _GoogleSignInSectionState extends State<_GoogleSignInSection> {
           child: FlatButton(
             onPressed: () async {
               final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-              final GoogleSignInAuthentication googleAuth =
-              await googleUser.authentication;
+              final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
               final AuthCredential credential = GoogleAuthProvider.getCredential(
                 accessToken: googleAuth.accessToken,
                 idToken: googleAuth.idToken,
@@ -82,19 +84,27 @@ class _GoogleSignInSectionState extends State<_GoogleSignInSection> {
               });
               final snapshot = await Firestore.instance.collection("Daily_Record").document(userID).get();
               if (snapshot == null || !snapshot.exists) {
-                Firestore.instance.collection("Daily_Record").document(userID).setData({"stressValue": "", "drink": 0, "sleep": 0,
+                Firestore.instance.collection("Daily_Record")
+                    .document(userID).setData({
+                  "stressValue": "", "drink": 0, "sleep": 0,
                   "morning": "", "lunch": "", "dinner": "",
                   "bioEat": 0, "dumpStatus": 0,
                   "countDay": 0, "comfortValue": "", "dumpCount": "", "alarmTime": "",
                 });
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AlarmPage(userID: userID, email: email, url: url)));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                        AlarmPage(userID: userID, email: email, url: url)));
               }
               else {
                 DailyRecord dailyRecord = DailyRecord.fromSnapshot(snapshot);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url, alarmTime: dailyRecord.alarmTime.toDate(),)));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                        HomePage(userID: userID, email: email, url: url, alarmTime: dailyRecord.alarmTime.toDate(),)));
               }
             },
-            child: Image.network('https://firebasestorage.googleapis.com/v0/b/final-exam-de688.appspot.com/o/googleSignIn.png?alt=media&token=b0039108-6b44-4cce-8091-b9d1264b071a', fit: BoxFit.contain),
+            child: Image.network(
+                'https://firebasestorage.googleapis.com/v0/b/final-exam-de688.appspot.com/o/googleSignIn.png?alt=media&token=b0039108-6b44-4cce-8091-b9d1264b071a',
+                fit: BoxFit.contain),
           ),
         ),
       ],

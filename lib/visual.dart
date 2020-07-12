@@ -119,8 +119,12 @@ class VisualState extends State<VisualPage> {
                         padding: EdgeInsets.only(left: 80),
                         child: Row(
                           children: <Widget>[
-                            if (record.countDay == 14  && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
-                              Text('설문조사를 마치기까지 ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays+1}일 걸렸습니다', style: TextStyle(color: Colors.red),),
+                            if (record.countDay == 14  &&
+                                record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
+                              Text(
+                                '설문조사를 마치기까지 ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays+1}일 걸렸습니다',
+                                style: TextStyle(
+                                    color: Colors.red),),
                           ],
                         ),
                       ),
@@ -128,10 +132,15 @@ class VisualState extends State<VisualPage> {
                         padding: EdgeInsets.only(left: 130),
                         child: Row(
                           children: <Widget>[
-                            if (record.countDay == 14 && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
-                              Icon(Icons.notification_important, color: Colors.red,),
-                            if (record.countDay == 14 && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
-                              Text(' ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13}일 초과하였습니다', style: TextStyle(color: Colors.red),),
+                            if (record.countDay == 14
+                                && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
+                              Icon(Icons.notification_important,
+                                color: Colors.red,),
+                            if (record.countDay == 14
+                                && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
+                              Text(
+                                ' ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13}일 초과하였습니다',
+                                style: TextStyle(color: Colors.red),),
                           ],
                         ),
                       ),
@@ -146,10 +155,11 @@ class VisualState extends State<VisualPage> {
                               animationDuration: 1200,
                               lineWidth: 10.0,
                               percent: record.countDay/14,
-                              center: new Text(
+                              center: Text(
                                 "${record.countDay}일" + "(${(record.countDay/14 * 100).round()}%)",
-                                style:
-                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0),
                               ),
                               backgroundColor: Colors.grey,
                               progressColor: Colors.indigo,
@@ -168,7 +178,10 @@ class VisualState extends State<VisualPage> {
                     children: <Widget>[
                       SizedBox(height: 10),
                       Container(
-                        child: Text("유산균 섭취 횟수", style: TextStyle(fontSize: 20, color: Colors.indigo),),
+                        child: Text("유산균 섭취 횟수",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.indigo),),
                       ),
                       SizedBox(height: 10),
                       Container(
@@ -176,9 +189,11 @@ class VisualState extends State<VisualPage> {
                         child: Row(
                           children: <Widget>[
                             for (int i = 0; i < record.bioEat; i++)
-                              Icon(Icons.sentiment_very_satisfied, color: Colors.blue,),
+                              Icon(Icons.sentiment_very_satisfied,
+                                color: Colors.blue,),
                             for (int i = 0; i < record.countDay - record.bioEat; i++)
-                              Icon(Icons.sentiment_very_dissatisfied, color: Colors.red,),
+                              Icon(Icons.sentiment_very_dissatisfied,
+                                color: Colors.red,),
                             for (int i = 0; i < 14 - record.countDay; i++)
                               Icon(Icons.sentiment_very_dissatisfied)
                           ],
@@ -199,14 +214,18 @@ class VisualState extends State<VisualPage> {
                     children: <Widget>[
                       SizedBox(height: 10),
                       Container(
-                        child: Text("스트레스 지수 분석", style: TextStyle(fontSize: 20, color: Colors.indigo),),
+                        child: Text("스트레스 지수 분석",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.indigo),),
                       ),
                       SizedBox(height: 10),
                       AspectRatio(
                         aspectRatio: 1.7,
                         child: Card(
                           elevation: 0,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4)),
                           color: const Color(0xff2c4260),
                           child: BarChart(
                             BarChartData(
@@ -239,7 +258,9 @@ class VisualState extends State<VisualPage> {
                                   bottomTitles: SideTitles(
                                     showTitles: true,
                                     textStyle: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
                                     margin: 10,
                                     getTitles: (double value) {
                                       switch (value.toInt()) {
@@ -271,8 +292,11 @@ class VisualState extends State<VisualPage> {
                                   for (int i=0; i<record.countDay; i++)
                                     BarChartGroupData(
                                       x: 0,
-                                      barRods: [BarChartRodData(y: int.parse(record.stressValue[i]).toDouble(), color: Colors.lightBlueAccent)],
-                                      showingTooltipIndicators: [0]),
+                                      barRods: [
+                                        BarChartRodData(
+                                          y: int.parse(record.stressValue[i]).toDouble(),
+                                          color: Colors.lightBlueAccent)],
+                                        showingTooltipIndicators: [0]),
                                 ]),
                         ),
                       ),),
@@ -292,7 +316,10 @@ class VisualState extends State<VisualPage> {
                     children: <Widget>[
                       SizedBox(height: 10),
                       Container(
-                        child: Text("음주량 분석", style: TextStyle(fontSize: 20, color: Colors.indigo),),
+                        child: Text("음주량 분석",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.indigo),),
                       ),
                       SizedBox(height: 10),
                       Container(
@@ -301,19 +328,24 @@ class VisualState extends State<VisualPage> {
                           children: <Widget>[
                             if (record.drink <= 3)
                               for (int i = 0; i < record.drink; i++)
-                                Icon(Icons.local_bar, color: Colors.blue),
+                                Icon(Icons.local_bar,
+                                    color: Colors.blue),
                             if (record.drink <= 3)
                               for (int i = 0; i < 14-record.drink; i++)
-                                Icon(Icons.local_bar, color: Colors.grey),
+                                Icon(Icons.local_bar,
+                                    color: Colors.grey),
                             if (record.drink > 3)
                               for (int i = 0; i < 3; i++)
-                                Icon(Icons.local_bar, color: Colors.blue),
+                                Icon(Icons.local_bar,
+                                    color: Colors.blue),
                             if (record.drink > 3)
                               for (int i = 0; i < record.drink-3; i++)
-                                Icon(Icons.local_bar, color: Colors.red),
+                                Icon(Icons.local_bar,
+                                    color: Colors.red),
                             if (record.drink > 3)
                               for (int i = 0; i < 14 - record.drink; i++)
-                                Icon(Icons.local_bar, color: Colors.grey),
+                                Icon(Icons.local_bar,
+                                    color: Colors.grey),
                           ],
                         ),
                       ),
@@ -324,7 +356,9 @@ class VisualState extends State<VisualPage> {
                           Column(
                             children: <Widget>[
                               if(record.drink>3)
-                                Text("   음주량 4회 이상!!\n과한 음주는 안 좋아요", style: TextStyle(color: Colors.red),)
+                                Text("   음주량 4회 이상!!\n과한 음주는 안 좋아요",
+                                  style: TextStyle(
+                                      color: Colors.red),)
                               else
                                 Text("적정 음주량: 최대 3회\n  아직은 괜찮습니다."),
                             ],
@@ -341,7 +375,10 @@ class VisualState extends State<VisualPage> {
                     children: <Widget>[
                       SizedBox(height: 10),
                       Container(
-                        child: Text("수면 시간 분석", style: TextStyle(fontSize: 20, color: Colors.indigo),),
+                        child: Text("수면 시간 분석",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.indigo),),
                       ),
                       SizedBox(height: 10),
                       Padding(
@@ -354,7 +391,9 @@ class VisualState extends State<VisualPage> {
                           percent: sleepAverage/12,
                           center: Text("평균 " + sleepAverage.round().toString()+"시간"),
                           linearStrokeCap: LinearStrokeCap.roundAll,
-                          progressColor: (sleepAverage.round()) >= 7 ? Colors.greenAccent : Colors.red,
+                          progressColor: (sleepAverage.round()) >= 7
+                              ? Colors.greenAccent
+                              : Colors.red,
                         ),
                       ),
                       SizedBox(height: 10),
@@ -363,7 +402,9 @@ class VisualState extends State<VisualPage> {
                         child: Column(
                           children: <Widget>[
                           if (sleepAverage.round() < 7)
-                            Text("          수면 시간 부족\n적정 수면 시간: 평균 7시간", style: TextStyle(color: Colors.red))
+                            Text("          수면 시간 부족\n적정 수면 시간: 평균 7시간",
+                                style: TextStyle(
+                                    color: Colors.red))
                           else
                             Text("적절한 수면 시간입니다"),
                           ],
@@ -382,7 +423,10 @@ class VisualState extends State<VisualPage> {
                       SizedBox(height: 10),
                       Container(
                         alignment: Alignment.center,
-                        child: Text("식단 분석", style: TextStyle(fontSize: 20, color: Colors.indigo)),
+                        child: Text("식단 분석",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.indigo)),
                       ),
                       SizedBox(height: 10),
                       PieChart(
@@ -423,14 +467,18 @@ class VisualState extends State<VisualPage> {
                       SizedBox(height: 10),
                       Container(
                         alignment: Alignment.center,
-                        child: Text("배변 횟수 분석", style: TextStyle(fontSize: 20, color: Colors.indigo)),
+                        child: Text("배변 횟수 분석",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.indigo)),
                       ),
                       SizedBox(height: 10),
                       AspectRatio(
                         aspectRatio: 1.7,
                         child: Card(
                           elevation: 0,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4)),
                           color: const Color(0xff2c4260),
                           child: BarChart(
                             BarChartData(
@@ -463,7 +511,9 @@ class VisualState extends State<VisualPage> {
                                   bottomTitles: SideTitles(
                                     showTitles: true,
                                     textStyle: TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
                                     margin: 10,
                                     getTitles: (double value) {
                                       switch (value.toInt()) {
@@ -495,7 +545,10 @@ class VisualState extends State<VisualPage> {
                                   for (int i=0; i<record.countDay; i++)
                                     BarChartGroupData(
                                         x: 0,
-                                        barRods: [BarChartRodData(y: int.parse(record.dumpCount[i]).toDouble(), color: Colors.lightBlueAccent)],
+                                        barRods: [
+                                          BarChartRodData(y: int.parse(
+                                              record.dumpCount[i]).toDouble(),
+                                              color: Colors.lightBlueAccent)],
                                         showingTooltipIndicators: [0]),
                                 ]),
                           ),
@@ -518,14 +571,18 @@ class VisualState extends State<VisualPage> {
                       SizedBox(height: 10),
                       Container(
                         alignment: Alignment.center,
-                        child: Text("배변감 분석", style: TextStyle(fontSize: 20, color: Colors.indigo)),
+                        child: Text("배변감 분석",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.indigo)),
                       ),
                       SizedBox(height: 10),
                       AspectRatio(
                         aspectRatio: 1.7,
                         child: Card(
                           elevation: 0,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4)),
                           color: const Color(0xff2c4260),
                           child: BarChart(
                             BarChartData(
@@ -590,7 +647,10 @@ class VisualState extends State<VisualPage> {
                                   for (int i=0; i<record.countDay; i++)
                                     BarChartGroupData(
                                         x: 0,
-                                        barRods: [BarChartRodData(y: int.parse(record.comfortValue[i]).toDouble(), color: Colors.lightBlueAccent)],
+                                        barRods: [
+                                          BarChartRodData(
+                                              y: int.parse(record.comfortValue[i]).toDouble(),
+                                              color: Colors.lightBlueAccent)],
                                         showingTooltipIndicators: [0]),
                                 ]),
                           ),
@@ -613,7 +673,10 @@ class VisualState extends State<VisualPage> {
                       SizedBox(height: 10),
                       Container(
                         alignment: Alignment.center,
-                        child: Text("배변 상태 분석", style: TextStyle(fontSize: 20, color: Colors.indigo)),
+                        child: Text("배변 상태 분석",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.indigo)),
                       ),
                       SizedBox(height: 10),
                       Container(
@@ -629,7 +692,9 @@ class VisualState extends State<VisualPage> {
                         padding: const EdgeInsets.only(top:10),
                         child: Text(
                           '장 건강 상태 평균',
-                          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold),
                           softWrap: true,
                         ),),
                       Container(
@@ -654,10 +719,16 @@ class VisualState extends State<VisualPage> {
                               Colors.indigo,
                             ],
                           ),),
-                        child: Text("Confirm", style: TextStyle(color: Colors.white, fontSize: 20), textAlign: TextAlign.center,),
+                        child: Text("Confirm",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20),
+                          textAlign: TextAlign.center,),
                       ),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime,)),);
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) =>
+                              HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime,)),);
                       }
                   ),
                 ),

@@ -11,9 +11,15 @@ class ResultPage extends StatefulWidget {
   final dumpCount, comfortValue, dumpStatus;
   final alarmTime;
   final DailyRecord record;
-  ResultPage({Key key, this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.bioEat, this.eatenHour, this.dumpCount, this.comfortValue, this.dumpStatus, this.userID, this.email, this.url, this.alarmTime, this.record}) : super(key: key);
+  ResultPage({Key key, this.stressValue, this.drink, this.sleep, this.morning,
+    this.lunch, this.dinner, this.bioEat, this.eatenHour,
+    this.dumpCount, this.comfortValue, this.dumpStatus, this.userID, this.email,
+    this.url, this.alarmTime, this.record}) : super(key: key);
+
   @override
-  _ResultPageState createState() => _ResultPageState(stressValue, drink, sleep, morning, lunch, dinner, bioEat, eatenHour, dumpCount, comfortValue, dumpStatus, userID, email, url, alarmTime, record);
+  _ResultPageState createState() => _ResultPageState(
+      stressValue, drink, sleep, morning, lunch, dinner, bioEat, eatenHour,
+      dumpCount, comfortValue, dumpStatus, userID, email, url, alarmTime, record);
 }
 
 class _ResultPageState extends State<ResultPage> {
@@ -24,7 +30,10 @@ class _ResultPageState extends State<ResultPage> {
   final dumpCount, comfortValue, dumpStatus;
   final alarmTime;
   final DailyRecord record;
-  _ResultPageState(this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.bioEat, this.eatenHour, this.dumpCount, this.comfortValue, this.dumpStatus, this.userID, this.email, this.url, this.alarmTime, this.record);
+  _ResultPageState(
+      this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner,
+      this.bioEat, this.eatenHour, this.dumpCount, this.comfortValue, this.dumpStatus,
+      this.userID, this.email, this.url, this.alarmTime, this.record);
   @override
 
   Widget build(BuildContext context) {
@@ -103,11 +112,18 @@ class _ResultPageState extends State<ResultPage> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Container(
-                      child: Text("스트레스 정도", style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text(
+                        "스트레스 정도",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(height: 20),
                     Container(
-                      child: Text(stressValue, style: TextStyle(fontSize: 80, color: Colors.indigo),),
+                      child: Text(
+                        stressValue,
+                        style: TextStyle(
+                            fontSize: 80,
+                            color: Colors.indigo),),
                     ),
                   ],
                 ),
@@ -118,11 +134,17 @@ class _ResultPageState extends State<ResultPage> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Container(
-                      child: Text("음주 여부", style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text("음주 여부",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(height: 20),
                     Container(
-                      child: Text(_drink, style: TextStyle(fontSize: 80, color: Colors.indigo)),
+                      child: Text(
+                          _drink,
+                          style: TextStyle(
+                              fontSize: 80,
+                              color: Colors.indigo)),
                     ),
                   ],
                 ),
@@ -133,11 +155,16 @@ class _ResultPageState extends State<ResultPage> {
                     children: <Widget>[
                       SizedBox(height: 20),
                       Container(
-                        child: Text("수면 시간", style: TextStyle(fontWeight: FontWeight.bold),),
+                        child: Text("수면 시간",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold),),
                       ),
                       SizedBox(height: 20),
                       Container(
-                        child: Text(sleep, style: TextStyle(fontSize: 80, color: Colors.indigo),),
+                        child: Text(sleep,
+                          style: TextStyle(
+                              fontSize: 80,
+                              color: Colors.indigo),),
                       ),
                     ],
                   ),
@@ -148,11 +175,17 @@ class _ResultPageState extends State<ResultPage> {
                     children: <Widget>[
                       SizedBox(height: 20),
                       Container(
-                        child: Text("아침 식단", style: TextStyle(fontWeight: FontWeight.bold),),
+                        child: Text("아침 식단",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold),),
                       ),
                       SizedBox(height: 30),
                       Container(
-                        child: Text(_morning, style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.indigo),),
+                        child: Text(_morning,
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.indigo),),
                       ),
                     ],
                   ),
@@ -163,11 +196,17 @@ class _ResultPageState extends State<ResultPage> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Container(
-                      child: Text("점심 식단", style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text("점심 식단",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(height: 30),
                     Container(
-                      child: Text(_lunch, style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.indigo),),
+                      child: Text(_lunch,
+                        style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.indigo),),
                     ),
                   ],
                 ),
@@ -178,11 +217,17 @@ class _ResultPageState extends State<ResultPage> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Container(
-                      child: Text("저녁 식단", style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text("저녁 식단",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(height: 30),
                     Container(
-                      child: Text(_dinner, style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.indigo),),
+                      child: Text(_dinner,
+                        style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.indigo),),
                     ),
                   ],
                 ),
@@ -193,11 +238,16 @@ class _ResultPageState extends State<ResultPage> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Container(
-                      child: Text("유산균 섭취 여부", style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text("유산균 섭취 여부",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(height: 20),
                     Container(
-                      child: Text(_eat, style: TextStyle(fontSize: 80, color: Colors.indigo)),
+                      child: Text(_eat,
+                          style: TextStyle(
+                              fontSize: 80,
+                              color: Colors.indigo)),
                     ),
                   ],
                 ),
@@ -208,11 +258,16 @@ class _ResultPageState extends State<ResultPage> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Container(
-                      child: Text("유산균 섭취 시간", style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text("유산균 섭취 시간",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(height: 55),
                     Container(
-                      child: Text(timeMatch, style: TextStyle(fontSize: 20, color: Colors.indigo)),
+                      child: Text(timeMatch,
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.indigo)),
                     ),
                   ],
                 ),
@@ -223,11 +278,15 @@ class _ResultPageState extends State<ResultPage> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Container(
-                      child: Text("배변 상태", style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text("배변 상태",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(height: 10),
                     Container(
-                      child: Image.asset('assets/$dumpStatus.png', width: 150),
+                      child: Image.asset(
+                          'assets/$dumpStatus.png',
+                          width: 150),
                     ),
                   ],
                 ),
@@ -238,11 +297,16 @@ class _ResultPageState extends State<ResultPage> {
                   children: <Widget>[
                     SizedBox(height: 20),
                     Container(
-                      child: Text("배변감", style: TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text("배변감",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(height: 20),
                     Container(
-                      child: Text(comfortValue, style: TextStyle(fontSize: 80, color: Colors.indigo)),
+                      child: Text(comfortValue,
+                          style: TextStyle(
+                              fontSize: 80,
+                              color: Colors.indigo)),
                     ),
                   ],
                 ),
@@ -263,7 +327,10 @@ class _ResultPageState extends State<ResultPage> {
                         Colors.indigo,
                       ],
                     ),),
-                  child: Text("Submit", style: TextStyle(color: Colors.white), textAlign: TextAlign.center,),
+                  child: Text("Submit",
+                    style: TextStyle(
+                        color: Colors.white),
+                    textAlign: TextAlign.center,),
                 ),
                 onPressed: () {
                   if (record.countDay == 0) {
@@ -291,7 +358,9 @@ class _ResultPageState extends State<ResultPage> {
                     "countDay": FieldValue.increment(1),
                     "submitTime": DateTime.now(),
                   });
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime,)),);
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                        HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime,)),);
                 }
             ),
           ),
