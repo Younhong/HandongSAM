@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'alarmSetting.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_app/alarmSetting.dart';
+import 'package:flutter_app/daily.record.dart';
+import 'package:flutter_app/home.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'record2.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'home.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -84,12 +84,14 @@ class _GoogleSignInSectionState extends State<_GoogleSignInSection> {
               });
               final snapshot = await Firestore.instance.collection("Daily_Record").document(userID).get();
               if (snapshot == null || !snapshot.exists) {
-                Firestore.instance.collection("Daily_Record")
+                Firestore.instance
+                    .collection("Daily_Record")
                     .document(userID).setData({
                   "stressValue": "", "drink": 0, "sleep": 0,
                   "morning": "", "lunch": "", "dinner": "",
                   "bioEat": 0, "dumpStatus": 0,
-                  "countDay": 0, "comfortValue": "", "dumpCount": "", "alarmTime": "",
+                  "countDay": 0, "comfortValue": "",
+                  "dumpCount": "", "alarmTime": "",
                 });
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) =>
@@ -97,9 +99,13 @@ class _GoogleSignInSectionState extends State<_GoogleSignInSection> {
               }
               else {
                 DailyRecord dailyRecord = DailyRecord.fromSnapshot(snapshot);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>
-                        HomePage(userID: userID, email: email, url: url, alarmTime: dailyRecord.alarmTime.toDate(),)));
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) =>
+                        HomePage(
+                          userID: userID,
+                          email: email,
+                          url: url,
+                          alarmTime: dailyRecord.alarmTime.toDate(),)));
               }
             },
             child: Image.network(

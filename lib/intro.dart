@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'developer.dart';
-import 'tech.dart';
-import 'vision.dart';
+import 'package:flutter_app/developer.dart';
+import 'package:flutter_app/tech.dart';
+import 'package:flutter_app/vision.dart';
 
 class IntroPage extends StatelessWidget {
   @override
@@ -20,7 +20,8 @@ class IntroPage extends StatelessWidget {
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(left: 35, top: 30),
-              child: Text("한동샘 이야기", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              child: Text("한동샘 이야기",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
             Container(
               padding: EdgeInsets.only(left: 110, right: 110, top:20),
@@ -36,9 +37,13 @@ class IntroPage extends StatelessWidget {
                         Colors.indigo,
                       ],
                     ),),
-                  child: Text("위드워터 개발자 소개", style: TextStyle(color: Colors.white), textAlign: TextAlign.center),
+                  child: Text("위드워터 개발자 소개",
+                      style: TextStyle(color: Colors.white),
+                      textAlign: TextAlign.center),
                 ),
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DeveloperPage())),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                        DeveloperPage())),
               ),
             ),
             Container(
@@ -55,9 +60,13 @@ class IntroPage extends StatelessWidget {
                         Colors.indigo,
                       ],
                     ),),
-                  child: Text("위드워터의 기술력", style: TextStyle(color: Colors.white), textAlign: TextAlign.center),
+                  child: Text("위드워터의 기술력",
+                      style: TextStyle(color: Colors.white),
+                      textAlign: TextAlign.center),
                 ),
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => TechPage())),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                        TechPage())),
               ),
             ),
             Container(
@@ -74,9 +83,13 @@ class IntroPage extends StatelessWidget {
                         Colors.indigo,
                       ],
                     ),),
-                  child: Text("한동샘의 비전", style: TextStyle(color: Colors.white), textAlign: TextAlign.center),
+                  child: Text("한동샘의 비전",
+                      style: TextStyle(color: Colors.white),
+                      textAlign: TextAlign.center),
                 ),
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VisionPage())),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                        VisionPage())),
               ),
             ),
           ],

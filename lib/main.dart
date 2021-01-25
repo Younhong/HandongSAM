@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'app.dart';
+import 'package:flutter_app/app.dart';
 
-void main() => runApp(ShrineApp());
+void main() => runApp(App());

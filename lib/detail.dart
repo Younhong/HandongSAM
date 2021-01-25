@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'record.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'web.dart';
+import 'package:flutter_app/record.dart';
+import 'package:flutter_app/web.dart';
 
 class DetailPage extends StatefulWidget {
   final Record record;
@@ -102,21 +102,24 @@ class SnackBarState extends State<SnackBarPage>{
                       child: Row(
                         children: <Widget>[
                           Container(
-                            child: Text('${record.price}', style: TextStyle(fontSize: 14),
+                            child: Text('${record.price}',
+                              style: TextStyle(fontSize: 14),
                             ),),
                         ],
                       ),
                     ),
                     Container(
                       padding: const EdgeInsets.only(left:10, top:3, bottom:3),
-                      child: Text(record.description, style: TextStyle(fontSize: 14)),
+                      child: Text(record.description,
+                          style: TextStyle(fontSize: 14)),
                     ),
                     SizedBox(height: 30),
                     Container(
                       padding: EdgeInsets.only(left: 250),
                       child: FlatButton(
                         child: Container(
-                          padding: EdgeInsets.only(left:10, right:10, top:5, bottom: 5),
+                          padding: EdgeInsets.only(
+                              left:10, right:10, top:5, bottom: 5),
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: <Color>[
@@ -125,9 +128,12 @@ class SnackBarState extends State<SnackBarPage>{
                                 Colors.indigo,
                               ],
                             ),),
-                          child: Text("구매하기", style: TextStyle(color: Colors.white)),
+                          child: Text("구매하기",
+                              style: TextStyle(color: Colors.white)),
                         ),
-                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => WebPage())),
+                        onPressed: () => Navigator.push(context,
+                            MaterialPageRoute(builder: (context) =>
+                                WebPage())),
                       ),
                     ),
                   ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'record2.dart';
-import 'home.dart';
+import 'package:flutter_app/daily.record.dart';
+import 'package:flutter_app/home.dart';
+import 'package:pie_chart/pie_chart.dart' as pc;
 import 'package:fl_chart/fl_chart.dart';
-import 'package:pie_chart/pie_chart.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class VisualPage extends StatefulWidget {
@@ -112,7 +112,8 @@ class VisualState extends State<VisualPage> {
                     children: <Widget>[
                       SizedBox(height: 10),
                       Container(
-                        child: Text("현재 출석일", style: TextStyle(fontSize: 20, color: Colors.indigo),),
+                        child: Text("현재 출석일",
+                          style: TextStyle(fontSize: 20, color: Colors.indigo),),
                       ),
                       SizedBox(height: 10),
                       Container(
@@ -389,7 +390,8 @@ class VisualState extends State<VisualPage> {
                           lineHeight: 20.0,
                           animationDuration: 2000,
                           percent: sleepAverage/12,
-                          center: Text("평균 " + sleepAverage.round().toString()+"시간"),
+                          center: Text(
+                              "평균 " + sleepAverage.round().toString()+"시간"),
                           linearStrokeCap: LinearStrokeCap.roundAll,
                           progressColor: (sleepAverage.round()) >= 7
                               ? Colors.greenAccent
@@ -429,7 +431,7 @@ class VisualState extends State<VisualPage> {
                                 color: Colors.indigo)),
                       ),
                       SizedBox(height: 10),
-                      PieChart(
+                      pc.PieChart(
                         dataMap: dataMap,
                         animationDuration: Duration(milliseconds: 2000),
                         chartLegendSpacing: 32.0,
@@ -440,14 +442,14 @@ class VisualState extends State<VisualPage> {
                         chartValueBackgroundColor: Colors.grey[200],
                         colorList: colorList,
                         showLegends: true,
-                        legendPosition: LegendPosition.right,
+                        legendPosition: pc.LegendPosition.right,
                         decimalPlaces: 1,
                         showChartValueLabel: true,
                         initialAngle: 0,
-                        chartValueStyle: defaultChartValueStyle.copyWith(
+                        chartValueStyle: pc.defaultChartValueStyle.copyWith(
                           color: Colors.blueGrey[900].withOpacity(0.9),
                         ),
-                        chartType: ChartType.disc,
+                        chartType: pc.ChartType.disc,
                       ),
                       SizedBox(height: 10),
                       Container(
@@ -726,9 +728,13 @@ class VisualState extends State<VisualPage> {
                           textAlign: TextAlign.center,),
                       ),
                       onPressed: () {
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) =>
-                              HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime,)),);
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) =>
+                                HomePage(
+                                  userID: userID,
+                                  email: email,
+                                  url: url,
+                                  alarmTime: alarmTime,)),);
                       }
                   ),
                 ),

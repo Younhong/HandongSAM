@@ -49,7 +49,8 @@ class TechPage extends StatelessWidget {
               padding: EdgeInsets.only(left: 30, right: 30, bottom: 10, top: 5),
               child: Text("- 동결건조 과정을 거친 프로바이오틱스 생균은 물이 제거되면서 세포 손상이 생기게 됩니다. 특히 건조된 분말을 바로 섭취할 경우 위산과 담즙산과 같은 산(Acid) 스트레스 환경에 바로 노출되면서 "
                   "손상을 입어 제 기능을 못하거나 죽기 쉽습니다. 뿐만 아니라, 세포벽에 손상을 입은 균은 장부착능력이 떨어져서 성공적인 장내 정착 및 유익균의 증식이 어렵게 됩니다.",
-                  style: TextStyle(fontSize: 17), textAlign: TextAlign.justify,),
+                  style: TextStyle(fontSize: 17),
+                textAlign: TextAlign.justify,),
             ),
             Container(
               padding: EdgeInsets.only(left: 30, right: 30, bottom: 20, top: 5),

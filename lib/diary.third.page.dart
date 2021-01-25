@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'diary4.dart';
+import 'package:flutter_app/diary.fourth.page.dart';
+import 'package:flutter_app/daily.record.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
-import 'record2.dart';
 
 class DiaryThirdPage extends StatefulWidget {
   final stressValue, drink, sleep;
@@ -36,7 +36,8 @@ class DiaryThirdState extends State <DiaryThirdPage> {
           Container(
             padding:EdgeInsets.only(left:20,top:20),
             alignment: Alignment.topLeft,
-            child: Text("* 유산균 섭취 여부",style:TextStyle(fontSize:20, fontWeight: FontWeight.bold)),
+            child: Text("* 유산균 섭취 여부",
+                style: TextStyle(fontSize:20, fontWeight: FontWeight.bold)),
           ),
           Column(
             children: <Widget>[
@@ -45,7 +46,12 @@ class DiaryThirdState extends State <DiaryThirdPage> {
                   padding:const EdgeInsets.all(15),
                   child:Row(
                     children: <Widget>[
-                      Radio(value:'1',groupValue: _bioEat, activeColor: Colors.indigo[900], onChanged: (value)=>setState(()=>_bioEat=value),),
+                      Radio(
+                        value:'1',
+                        groupValue: _bioEat,
+                        activeColor: Colors.indigo[900],
+                        onChanged: (value) =>
+                            setState(() => _bioEat=value),),
                       Text('Yes'),
                     ],
                   )
@@ -59,7 +65,11 @@ class DiaryThirdState extends State <DiaryThirdPage> {
                   padding:const EdgeInsets.all(15),
                   child:Row(
                     children: <Widget>[
-                      Radio(value: '0',groupValue: _bioEat, activeColor: Colors.indigo[900], onChanged: (value)=>setState(()=>_bioEat=value),),
+                      Radio(value: '0',
+                        groupValue: _bioEat,
+                        activeColor: Colors.indigo[900],
+                        onChanged: (value) =>
+                            setState(() => _bioEat=value),),
                       Text('No'),
                     ],
                   )
@@ -69,18 +79,21 @@ class DiaryThirdState extends State <DiaryThirdPage> {
           Container(
             padding:EdgeInsets.only(left:20,top: 5, bottom: 5),
             alignment: Alignment.topLeft,
-            child: Text("* 유산균 섭취 시간",style:TextStyle(fontSize:20, fontWeight: FontWeight.bold)),
+            child: Text("* 유산균 섭취 시간",
+                style: TextStyle(fontSize:20, fontWeight: FontWeight.bold)),
           ),
           hourMinute12HCustomStyle(),
           Container(
             padding: EdgeInsets.only(top:10, bottom: 5),
             child: FlatButton(
-              onPressed: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => DiaryFourthPage(
-                  stressValue: stressValue, drink:drink, sleep: sleep,
-                  morning: morning, lunch: lunch, dinner: dinner,
-                  bioEat: _bioEat, eatenHour: _eatenHour,
-                  userID: userID, email: email, url: url,
-                  alarmTime: alarmTime, record: record)
+              onPressed: ()=> Navigator.push(context,
+                  MaterialPageRoute(builder: (context) =>
+                      DiaryFourthPage(
+                        stressValue: stressValue, drink:drink, sleep: sleep,
+                        morning: morning, lunch: lunch, dinner: dinner,
+                        bioEat: _bioEat, eatenHour: _eatenHour,
+                        userID: userID, email: email, url: url,
+                        alarmTime: alarmTime, record: record)
               )),
               textColor: Colors.white,
               child: Container(

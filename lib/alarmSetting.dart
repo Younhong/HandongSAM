@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/home.dart';
+import 'package:flutter_app/daily.record.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'home.dart';
-import 'record2.dart';
 
 class AlarmPage extends StatefulWidget {
   final email;

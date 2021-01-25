@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'record2.dart';
+import 'package:flutter_app/daily.record.dart';
+import 'package:flutter_app/home.dart';
 
 class ResultPage extends StatefulWidget {
   final stressValue, drink, sleep;
@@ -358,9 +358,13 @@ class _ResultPageState extends State<ResultPage> {
                     "countDay": FieldValue.increment(1),
                     "submitTime": DateTime.now(),
                   });
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>
-                        HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime,)),);
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) =>
+                          HomePage(
+                            userID: userID,
+                            email: email,
+                            url: url,
+                            alarmTime: alarmTime,)),);
                 }
             ),
           ),

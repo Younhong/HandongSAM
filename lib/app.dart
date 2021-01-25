@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
-import 'login.dart';
+import 'package:flutter_app/home.dart';
+import 'package:flutter_app/login.dart';
 
-class ShrineApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

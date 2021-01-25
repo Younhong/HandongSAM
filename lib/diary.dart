@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'diary2.dart';
-import 'record2.dart';
+import 'package:flutter_app/diary.second.page.dart';
+import 'package:flutter_app/daily.record.dart';
 
 class DiaryPage extends StatefulWidget {
   final alarmTime;
   final userID, email, url;
   final DailyRecord record;
   DiaryPage({Key key, this.userID, this.email, this.url, this.alarmTime, this.record}) : super(key: key);
-  DiaryState createState() => DiaryState(userID, email, url, alarmTime, record);
+
+  DiaryState createState() => DiaryState(
+      userID, email, url, alarmTime, record);
 }
 
 class DiaryState extends State <DiaryPage> {
@@ -34,16 +36,27 @@ class DiaryState extends State <DiaryPage> {
           Container(
             padding: EdgeInsets.only(left: 10, top: 30),
             alignment: Alignment.topLeft,
-            child: Text("* 스트레스 지수",style:TextStyle(fontSize:20,fontWeight: FontWeight.bold)),
+            child: Text("* 스트레스 지수",
+                style:TextStyle(
+                    fontSize:20,
+                    fontWeight: FontWeight.bold)),
           ),
-          Slider(value: _stressValue, onChanged: _setValue, activeColor: Colors.indigo[900], inactiveColor: Colors.indigo),
+          Slider(
+              value: _stressValue,
+              onChanged: _setValue,
+              activeColor: Colors.indigo[900],
+              inactiveColor: Colors.indigo),
           Container(
             padding: const EdgeInsets.only(left: 340, top: 5),
-            child: Text('${(_stressValue*4 + 1).round()}',style:TextStyle(fontWeight: FontWeight.bold)),
-          ),          Container(
+            child: Text('${(_stressValue*4 + 1).round()}',
+                style:TextStyle(
+                    fontWeight: FontWeight.bold)),
+          ),
+          Container(
             padding:EdgeInsets.only(left:10,top:20),
             alignment: Alignment.topLeft,
-            child: Text("* 음주 여부",style:TextStyle(fontSize:20,fontWeight: FontWeight.bold)),
+            child: Text("* 음주 여부",
+                style:TextStyle(fontSize:20,fontWeight: FontWeight.bold)),
           ),
           Column(
             children: <Widget>[
@@ -52,7 +65,11 @@ class DiaryState extends State <DiaryPage> {
                   padding:const EdgeInsets.all(15),
                   child:Row(
                     children: <Widget>[
-                      Radio(value:"1",groupValue: _drink,activeColor: Colors.indigo,onChanged: (value)=>setState(()=>_drink=value),),
+                      Radio(
+                        value:"1",
+                        groupValue: _drink,
+                        activeColor: Colors.indigo,
+                        onChanged: (value) => setState(()=>_drink=value),),
                       Text('Yes',style:TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   )
@@ -66,8 +83,13 @@ class DiaryState extends State <DiaryPage> {
                   padding:const EdgeInsets.all(15),
                   child:Row(
                     children: <Widget>[
-                      Radio(value:"0",groupValue: _drink,activeColor: Colors.indigo,onChanged: (value)=>setState(()=>_drink=value),),
-                      Text('No',style:TextStyle(fontWeight: FontWeight.bold)),
+                      Radio(
+                        value:"0",
+                        groupValue: _drink,
+                        activeColor: Colors.indigo,
+                        onChanged: (value)=>setState(() => _drink=value),),
+                      Text('No',
+                          style:TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   )
               )
@@ -76,7 +98,10 @@ class DiaryState extends State <DiaryPage> {
           Container(
             padding:EdgeInsets.only(left:10,top:5, bottom: 5),
             alignment: Alignment.topLeft,
-            child: Text("* 수면 시간",style:TextStyle(fontSize:20,fontWeight: FontWeight.bold)),
+            child: Text("* 수면 시간",
+                style:TextStyle(
+                    fontSize:20,
+                    fontWeight: FontWeight.bold)),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -97,9 +122,15 @@ class DiaryState extends State <DiaryPage> {
           Container(
             padding: EdgeInsets.only(top:10, bottom: 5),
             child: FlatButton(
-              onPressed: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => DiarySecondPage(
-                  stressValue: (_stressValue*4 + 1).round().toString(), drink:_drink, sleep: _sleepHourController.text,
-                  userID: userID, email: email, url: url, alarmTime: alarmTime, record: record)
+              onPressed: ()=> Navigator.push(context,
+                  MaterialPageRoute(builder: (context) =>
+                      DiarySecondPage(
+                          stressValue: (_stressValue*4 + 1).round().toString(),
+                          drink:_drink,
+                          sleep: _sleepHourController.text,
+                          userID: userID,
+                          email: email, url: url,
+                          alarmTime: alarmTime, record: record)
               )),
               textColor: Colors.white,
               child: Container(

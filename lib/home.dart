@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'record2.dart';
-import 'profile.dart';
-import 'record.dart';
-import 'detail.dart';
-import 'login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'intro.dart';
-import 'diary.dart';
+import 'package:flutter_app/daily.record.dart';
+import 'package:flutter_app/detail.dart';
+import 'package:flutter_app/diary.dart';
+import 'package:flutter_app/intro.dart';
+import 'package:flutter_app/login.dart';
+import 'package:flutter_app/profile.dart';
+import 'package:flutter_app/record.dart';
+import 'package:flutter_app/visual.dart';
+import 'package:flutter_app/web.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
-import 'visual.dart';
-import 'web.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -50,11 +50,14 @@ class HomeState extends State<HomePage> {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      child: CircleAvatar(backgroundImage: NetworkImage(url),),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(url),),
                     ),
                     Container(
                       padding: EdgeInsets.only(left: 15),
-                      child: Text(email, style: TextStyle(color: Colors.white, fontSize: 19)),
+                      child: Text(email,
+                          style: TextStyle(
+                              color: Colors.white, fontSize: 19)),
                     ),
                   ],
                 ),
@@ -72,14 +75,17 @@ class HomeState extends State<HomePage> {
                 leading: Icon(Icons.info, color: Colors.indigo),
                 onTap: () {
                   _signOut();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => IntroPage()));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => IntroPage()));
                 }
             ),
             ListTile(
                 title: Text("My Page"),
                 leading: Icon(Icons.account_circle, color: Colors.indigo),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(email: email, url: url)));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => ProfilePage(
+                          email: email, url: url)));
                 }
             ),
             ListTile(
@@ -87,7 +93,9 @@ class HomeState extends State<HomePage> {
                 leading: Icon(Icons.exit_to_app, color: Colors.indigo),
                 onTap: () {
                   _signOut();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) =>
+                          SignInPage()));
                 }
             ),
           ],
@@ -150,7 +158,10 @@ class HomeState extends State<HomePage> {
     }
     else if (index == 2) {
       return StreamBuilder<DocumentSnapshot>(
-        stream: Firestore.instance.collection("Daily_Record").document(userID).snapshots(),
+        stream: Firestore.instance
+            .collection("Daily_Record")
+            .document(userID)
+            .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) return LinearProgressIndicator();
           return _buildDiary(context, snapshot.data);
@@ -159,7 +170,10 @@ class HomeState extends State<HomePage> {
     }
     else{
       return StreamBuilder<DocumentSnapshot>(
-        stream: Firestore.instance.collection("Daily_Record").document(userID).snapshots(),
+        stream: Firestore.instance
+            .collection("Daily_Record")
+            .document(userID)
+            .snapshots(),
         builder: (context,snapshot){
           if(!snapshot.hasData) return LinearProgressIndicator();
           return _buildResult(context,snapshot.data);
@@ -174,13 +188,16 @@ class HomeState extends State<HomePage> {
         Container(
             height: 120,
             padding: EdgeInsets.only(top: 40),
-            child: Text("HandongSAM Product", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),)
+            child: Text("HandongSAM Product",
+              style: TextStyle(
+                  fontSize: 25, fontWeight: FontWeight.bold),)
         ),
         GridView.count (
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           crossAxisCount: 2,
-          children: snapshot.map((data) => _buildListItem(context, data)).toList(),
+          children: snapshot.map((data) =>
+              _buildListItem(context, data)).toList(),
         )
       ],
     );
@@ -206,7 +223,8 @@ class HomeState extends State<HomePage> {
               padding: const EdgeInsets.only(top:10, left: 20),
               child: Text(
                 record.name,
-                style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 12.0, fontWeight: FontWeight.bold),
                 softWrap: true,
               ),),
             Container(
@@ -229,7 +247,12 @@ class HomeState extends State<HomePage> {
                 children: <Widget>[
                   FlatButton(
                     child: Text('More', style: TextStyle(fontSize: 12, color: Colors.blue),),
-                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(record: record, userID: userID, docID: data.documentID))),
+                    onPressed: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>
+                            DetailPage(
+                                record: record,
+                                userID: userID,
+                                docID: data.documentID))),
                   ),
                 ],
               ),
@@ -263,7 +286,8 @@ class HomeState extends State<HomePage> {
         ),
         Container(
           padding: EdgeInsets.only(top:10),
-          child: Text("변경된 알람을 저장하시겠습니까?",style:TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+          child: Text("변경된 알람을 저장하시겠습니까?",
+              style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
         ),
         Row(
           children: <Widget>[
@@ -272,7 +296,8 @@ class HomeState extends State<HomePage> {
               child: FlatButton(
                 child: Container(
                   width: 50,
-                  padding: EdgeInsets.only(left:10, right:10, top:5, bottom: 5),
+                  padding: EdgeInsets.only(
+                      left:10, right:10, top:5, bottom: 5),
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: <Color>[
@@ -281,9 +306,13 @@ class HomeState extends State<HomePage> {
                         Colors.indigo,
                       ],
                     ),),
-                  child: Text("취소", textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                  child: Text("취소",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white)),
                 ),
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime)),
+                onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) =>
+                      HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime)),
                 ),),),
             Container(
               padding: EdgeInsets.only(top: 10),
@@ -299,7 +328,9 @@ class HomeState extends State<HomePage> {
                         Colors.indigo,
                       ],
                     ),),
-                  child: Text("저장", textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),
+                  child: Text("저장",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),),
                 ),
                 onPressed: ()  {
                   showDialog<void>(
@@ -320,9 +351,12 @@ class HomeState extends State<HomePage> {
                               Row(
                                 children: <Widget>[
                                   Container(
-                                    padding: EdgeInsets.only(top: 30, left: 120),
+                                    padding: EdgeInsets.only(
+                                        top: 30, left: 120),
                                     child: FlatButton(
-                                        child: Text('Cancel', style: TextStyle(color: Colors.blue)),
+                                        child: Text('Cancel',
+                                            style: TextStyle(
+                                                color: Colors.blue)),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         }
@@ -332,11 +366,21 @@ class HomeState extends State<HomePage> {
                                     width: 70,
                                     padding: EdgeInsets.only(top: 30),
                                     child: FlatButton(
-                                        child: Text('Save', style: TextStyle(color: Colors.blue)),
+                                        child: Text('Save',
+                                            style: TextStyle(color: Colors.blue)),
                                         onPressed: () {
                                           alarmTime = _dateTime;
-                                          Firestore.instance.collection("Daily_Record").document(userID).updateData({"alarmTime": alarmTime});
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime,)));
+                                          Firestore.instance
+                                              .collection("Daily_Record")
+                                              .document(userID)
+                                              .updateData({"alarmTime": alarmTime});
+                                          Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) =>
+                                                  HomePage(
+                                                    userID: userID,
+                                                    email: email,
+                                                    url: url,
+                                                    alarmTime: alarmTime,)));
                                         }
                                     ),
                                   ),
@@ -379,12 +423,13 @@ class HomeState extends State<HomePage> {
   }
 
   Widget _buildDiary(BuildContext context, snapshot) {
-    final DailyRecord record2 = DailyRecord.fromSnapshot(snapshot);
+    final DailyRecord dailyRecord = DailyRecord.fromSnapshot(snapshot);
     return Column(
       children: <Widget>[
         SizedBox(height:200),
         Container(
-          child: Text("건강한 습관을 들이기 위한 장일기", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          child: Text("건강한 습관을 들이기 위한 장일기",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
         ),
         SizedBox(height: 10),
         Container(
@@ -400,11 +445,12 @@ class HomeState extends State<HomePage> {
                       Colors.indigo,
                     ],
                   ),),
-                child: Text("장일기 작성", style: TextStyle(fontSize: 20),),
+                child: Text("장일기 작성",
+                  style: TextStyle(fontSize: 20),),
               ),
               onPressed: () {
-                if (record2.countDay >= 1 && record2.countDay < 14) {
-                  if (record2.submitTime.toDate().day == DateTime.now().day) {
+                if (dailyRecord.countDay >= 1 && dailyRecord.countDay < 14) {
+                  if (dailyRecord.submitTime.toDate().day == DateTime.now().day) {
                     showDialog<void>(
                       context: context,
                       barrierDismissible: false, // user must tap button!
@@ -420,7 +466,8 @@ class HomeState extends State<HomePage> {
                                 Container(
                                   padding: EdgeInsets.only(top: 30, left: 180),
                                   child: FlatButton(
-                                      child: Text('Cancel', style: TextStyle(color: Colors.blue)),
+                                      child: Text('Cancel',
+                                          style: TextStyle(color: Colors.blue)),
                                       onPressed: () {
                                         Navigator.pop(context);
                                       }
@@ -431,9 +478,10 @@ class HomeState extends State<HomePage> {
                         );
                       },);
                   }
-                  else Navigator.push(context, MaterialPageRoute(builder: (context) => DiaryPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: record2)));
+                  else Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => DiaryPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: dailyRecord)));
                 }
-                else if (record2.countDay >= 14) {
+                else if (dailyRecord.countDay >= 14) {
                   showDialog<void>(
                     context: context,
                     barrierDismissible: false, // user must tap button!
@@ -451,7 +499,10 @@ class HomeState extends State<HomePage> {
                                   Container(
                                     width: 70,
                                     child: FlatButton(
-                                        child: Text('Cancel', style: TextStyle(color: Colors.blue, fontSize: 12)),
+                                        child: Text('Cancel',
+                                            style: TextStyle(
+                                                color: Colors.blue,
+                                                fontSize: 12)),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         }
@@ -460,9 +511,19 @@ class HomeState extends State<HomePage> {
                                   Container(
                                     width: 80,
                                     child: FlatButton(
-                                        child: Text('결과분석', style: TextStyle(color: Colors.blue, fontSize: 12)),
+                                        child: Text('결과분석',
+                                            style: TextStyle(
+                                                color: Colors.blue,
+                                                fontSize: 12)),
                                         onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => VisualPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: record2)));
+                                          Navigator.push(context, MaterialPageRoute(
+                                              builder: (context) =>
+                                                  VisualPage(
+                                                      userID: userID,
+                                                      email: email,
+                                                      url: url,
+                                                      alarmTime: alarmTime,
+                                                      record: dailyRecord)));
                                         }
                                     ),
                                   ),
@@ -471,20 +532,30 @@ class HomeState extends State<HomePage> {
                                     child: FlatButton(
                                         child: Text('초기화', style: TextStyle(color: Colors.blue, fontSize: 12)),
                                         onPressed: () {
-                                          record2.reference.updateData({"stressValue": "", "drink": 0, "sleep": 0,
+                                          dailyRecord.reference.updateData({
+                                            "stressValue": "", "drink": 0, "sleep": 0,
                                             "morning": "", "lunch": "", "dinner": "",
                                             "bioEat": 0, "dumpStatus": 0,
                                             "comfortValue": "", "dumpCount": "", "countDay": 0});
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(userID: userID, email: email, url: url, alarmTime: alarmTime)));
+                                          Navigator.push(context, MaterialPageRoute(
+                                              builder: (context) =>
+                                                  HomePage(
+                                                      userID: userID,
+                                                      email: email,
+                                                      url: url,
+                                                      alarmTime: alarmTime)));
                                         }
                                     ),
                                   ),
                                   Container(
                                     width: 60,
                                     child: FlatButton(
-                                        child: Text('구매', style: TextStyle(color: Colors.blue, fontSize: 12)),
+                                        child: Text('구매',
+                                            style: TextStyle(
+                                                color: Colors.blue, fontSize: 12)),
                                         onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => WebPage()));
+                                          Navigator.push(context, MaterialPageRoute(
+                                              builder: (context) => WebPage()));
                                         }
                                     ),
                                   ),
@@ -497,7 +568,13 @@ class HomeState extends State<HomePage> {
                     },);
                 }
                 else
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => DiaryPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: record2)));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => DiaryPage(
+                          userID: userID,
+                          email: email,
+                          url: url,
+                          alarmTime: alarmTime,
+                          record: dailyRecord)));
               }
           ),
         ),
@@ -506,12 +583,14 @@ class HomeState extends State<HomePage> {
   }
 
   Widget _buildResult(BuildContext context, snapshot) {
-    final DailyRecord record2 = DailyRecord.fromSnapshot(snapshot);
+    final DailyRecord dailyRecord = DailyRecord.fromSnapshot(snapshot);
     return Column(
       children: <Widget>[
         SizedBox(height: 200),
         Container(
-          child: Text("매일매일 확인하는 내 장건강", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+          child: Text("매일매일 확인하는 내 장건강",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 20),),
         ),
         SizedBox(height: 10),
         Container(
@@ -527,11 +606,12 @@ class HomeState extends State<HomePage> {
                       Colors.indigo,
                     ],
                   ),),
-                child: Text("장일기 분석", style: TextStyle(fontSize: 20),),
+                child: Text("장일기 분석",
+                  style: TextStyle(fontSize: 20),),
               ),
               onPressed: () {
-                if (record2.countDay > 0) {
-                  if (record2.countDay <= 13) {
+                if (dailyRecord.countDay > 0) {
+                  if (dailyRecord.countDay <= 13) {
                     showDialog<void>(
                       context: context,
                       barrierDismissible: false, // user must tap button!
@@ -547,7 +627,8 @@ class HomeState extends State<HomePage> {
                                 Container(
                                   padding: EdgeInsets.only(top: 30, left: 100),
                                   child: FlatButton(
-                                      child: Text('Cancel', style: TextStyle(color: Colors.blue)),
+                                      child: Text('Cancel',
+                                          style: TextStyle(color: Colors.blue)),
                                       onPressed: () {
                                         Navigator.pop(context);
                                       }
@@ -557,9 +638,17 @@ class HomeState extends State<HomePage> {
                                   width: 90,
                                   padding: EdgeInsets.only(top: 30),
                                   child: FlatButton(
-                                      child: Text('결과분석', style: TextStyle(color: Colors.blue)),
+                                      child: Text('결과분석',
+                                          style: TextStyle(color: Colors.blue)),
                                       onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => VisualPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: record2)));
+                                        Navigator.push(context, MaterialPageRoute(
+                                            builder: (context) =>
+                                                VisualPage(
+                                                    userID: userID,
+                                                    email: email,
+                                                    url: url,
+                                                    alarmTime: alarmTime,
+                                                    record: dailyRecord)));
                                       }
                                   ),
                                 ),
@@ -569,7 +658,13 @@ class HomeState extends State<HomePage> {
                       },);
                   }
                   else
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => VisualPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: record2)));
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => VisualPage(
+                            userID: userID,
+                            email: email,
+                            url: url,
+                            alarmTime: alarmTime,
+                            record: dailyRecord)));
                 }
                 else {
                   showDialog<void>(
@@ -587,7 +682,8 @@ class HomeState extends State<HomePage> {
                               Container(
                                 padding: EdgeInsets.only(top: 30, left: 80),
                                 child: FlatButton(
-                                    child: Text('Cancel', style: TextStyle(color: Colors.blue)),
+                                    child: Text('Cancel',
+                                        style: TextStyle(color: Colors.blue)),
                                     onPressed: () {
                                       Navigator.pop(context);
                                     }
@@ -596,9 +692,17 @@ class HomeState extends State<HomePage> {
                               Container(
                                 padding: EdgeInsets.only(top: 30),
                                 child: FlatButton(
-                                    child: Text('장일기로 이동', style: TextStyle(color: Colors.blue)),
+                                    child: Text('장일기로 이동',
+                                        style: TextStyle(color: Colors.blue)),
                                     onPressed: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => DiaryPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: record2)));
+                                      Navigator.push(context, MaterialPageRoute(
+                                          builder: (context) =>
+                                              DiaryPage(
+                                                  userID: userID,
+                                                  email: email,
+                                                  url: url,
+                                                  alarmTime: alarmTime,
+                                                  record: dailyRecord)));
                                     }
                                 ),
                               ),
