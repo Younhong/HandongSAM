@@ -6,17 +6,17 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class VisualPage extends StatefulWidget {
-  final DailyRecord record;
+  final DailyRecord dailyRecord;
   final userID, email, url, alarmTime;
-  VisualPage({Key key, this.userID, this.email, this.url, this.alarmTime, this.record}) : super(key: key);
+  VisualPage({Key key, this.userID, this.email, this.url, this.alarmTime, this.dailyRecord}) : super(key: key);
   @override
-  VisualState createState() => VisualState(userID, email, url, alarmTime, record);
+  VisualState createState() => VisualState(userID, email, url, alarmTime, dailyRecord);
 }
 
 class VisualState extends State<VisualPage> {
-  final DailyRecord record;
+  final DailyRecord dailyRecord;
   final userID, email, url, alarmTime;
-  VisualState(this.userID, this.email, this.url, this.alarmTime, this.record);
+  VisualState(this.userID, this.email, this.url, this.alarmTime, this.dailyRecord);
 
   Widget build(BuildContext context) {
     List<Color> colorList = [
@@ -28,56 +28,56 @@ class VisualState extends State<VisualPage> {
       Colors.indigo[300],
       Colors.deepPurpleAccent[100],
     ];
-    double sleepAverage = record.sleep / record.countDay;
-    double dumpAverage = record.dumpStatus / record.countDay;
+    double sleepAverage = dailyRecord.sleep / dailyRecord.countDay;
+    double dumpAverage = dailyRecord.dumpStatus / dailyRecord.countDay;
     String dumpImage = "assets/${dumpAverage.round()}.png";
 
     int first=0,second=0,third=0,fourth=0,fifth=0,sixth=0,seventh = 0;
 
-    for (int i = 0; i<record.morning.length; i++) {
-      if (record.morning[i] == "1")
+    for (int i = 0; i<dailyRecord.morning.length; i++) {
+      if (dailyRecord.morning[i] == "1")
         first++;
-      else if (record.morning[i] == "2")
+      else if (dailyRecord.morning[i] == "2")
         second++;
-      else if (record.morning[i] == "3")
+      else if (dailyRecord.morning[i] == "3")
         third++;
-      else if (record.morning[i] == "4")
+      else if (dailyRecord.morning[i] == "4")
         fourth++;
-      else if (record.morning[i] == "5")
+      else if (dailyRecord.morning[i] == "5")
         fifth++;
-      else if (record.morning[i] == "6")
+      else if (dailyRecord.morning[i] == "6")
         sixth++;
       else
         seventh++;
     }
-    for (int i = 0; i<record.lunch.length; i++) {
-      if (record.lunch[i] == "1")
+    for (int i = 0; i<dailyRecord.lunch.length; i++) {
+      if (dailyRecord.lunch[i] == "1")
         first++;
-      else if (record.lunch[i] == "2")
+      else if (dailyRecord.lunch[i] == "2")
         second++;
-      else if (record.lunch[i] == "3")
+      else if (dailyRecord.lunch[i] == "3")
         third++;
-      else if (record.lunch[i] == "4")
+      else if (dailyRecord.lunch[i] == "4")
         fourth++;
-      else if (record.lunch[i] == "5")
+      else if (dailyRecord.lunch[i] == "5")
         fifth++;
-      else if (record.lunch[i] == "6")
+      else if (dailyRecord.lunch[i] == "6")
         sixth++;
       else
         seventh++;
     }
-    for (int i = 0; i<record.dinner.length; i++) {
-      if (record.dinner[i] == "1")
+    for (int i = 0; i<dailyRecord.dinner.length; i++) {
+      if (dailyRecord.dinner[i] == "1")
         first++;
-      else if (record.dinner[i] == "2")
+      else if (dailyRecord.dinner[i] == "2")
         second++;
-      else if (record.dinner[i] == "3")
+      else if (dailyRecord.dinner[i] == "3")
         third++;
-      else if (record.dinner[i] == "4")
+      else if (dailyRecord.dinner[i] == "4")
         fourth++;
-      else if (record.dinner[i] == "5")
+      else if (dailyRecord.dinner[i] == "5")
         fifth++;
-      else if (record.dinner[i] == "6")
+      else if (dailyRecord.dinner[i] == "6")
         sixth++;
       else
         seventh++;
@@ -95,7 +95,7 @@ class VisualState extends State<VisualPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
-        title: Text('${record.countDay}일의 장일기 분석'),
+        title: Text('${dailyRecord.countDay}일의 장일기 분석'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -120,10 +120,10 @@ class VisualState extends State<VisualPage> {
                         padding: EdgeInsets.only(left: 80),
                         child: Row(
                           children: <Widget>[
-                            if (record.countDay == 14  &&
-                                record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
+                            if (dailyRecord.countDay == 14  &&
+                                dailyRecord.lastSubmitTime.toDate().difference(dailyRecord.initialTme.toDate()).inDays-13 > 0)
                               Text(
-                                '설문조사를 마치기까지 ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays+1}일 걸렸습니다',
+                                '설문조사를 마치기까지 ${dailyRecord.lastSubmitTime.toDate().difference(dailyRecord.initialTme.toDate()).inDays+1}일 걸렸습니다',
                                 style: TextStyle(
                                     color: Colors.red),),
                           ],
@@ -133,14 +133,14 @@ class VisualState extends State<VisualPage> {
                         padding: EdgeInsets.only(left: 130),
                         child: Row(
                           children: <Widget>[
-                            if (record.countDay == 14
-                                && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
+                            if (dailyRecord.countDay == 14
+                                && dailyRecord.lastSubmitTime.toDate().difference(dailyRecord.initialTme.toDate()).inDays-13 > 0)
                               Icon(Icons.notification_important,
                                 color: Colors.red,),
-                            if (record.countDay == 14
-                                && record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13 > 0)
+                            if (dailyRecord.countDay == 14
+                                && dailyRecord.lastSubmitTime.toDate().difference(dailyRecord.initialTme.toDate()).inDays-13 > 0)
                               Text(
-                                ' ${record.lastSubmitTime.toDate().difference(record.initialTme.toDate()).inDays-13}일 초과하였습니다',
+                                ' ${dailyRecord.lastSubmitTime.toDate().difference(dailyRecord.initialTme.toDate()).inDays-13}일 초과하였습니다',
                                 style: TextStyle(color: Colors.red),),
                           ],
                         ),
@@ -155,9 +155,9 @@ class VisualState extends State<VisualPage> {
                               animation: true,
                               animationDuration: 1200,
                               lineWidth: 10.0,
-                              percent: record.countDay/14,
+                              percent: dailyRecord.countDay/14,
                               center: Text(
-                                "${record.countDay}일" + "(${(record.countDay/14 * 100).round()}%)",
+                                "${dailyRecord.countDay}일" + "(${(dailyRecord.countDay/14 * 100).round()}%)",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
@@ -189,13 +189,13 @@ class VisualState extends State<VisualPage> {
                         padding: EdgeInsets.only(left: 30),
                         child: Row(
                           children: <Widget>[
-                            for (int i = 0; i < record.bioEat; i++)
+                            for (int i = 0; i < dailyRecord.bioEat; i++)
                               Icon(Icons.sentiment_very_satisfied,
                                 color: Colors.blue,),
-                            for (int i = 0; i < record.countDay - record.bioEat; i++)
+                            for (int i = 0; i < dailyRecord.countDay - dailyRecord.bioEat; i++)
                               Icon(Icons.sentiment_very_dissatisfied,
                                 color: Colors.red,),
-                            for (int i = 0; i < 14 - record.countDay; i++)
+                            for (int i = 0; i < 14 - dailyRecord.countDay; i++)
                               Icon(Icons.sentiment_very_dissatisfied)
                           ],
                         ),
@@ -290,12 +290,12 @@ class VisualState extends State<VisualPage> {
                                   show: false,
                                 ),
                                 barGroups: [
-                                  for (int i=0; i<record.countDay; i++)
+                                  for (int i=0; i<dailyRecord.countDay; i++)
                                     BarChartGroupData(
                                       x: 0,
                                       barRods: [
                                         BarChartRodData(
-                                          y: int.parse(record.stressValue[i]).toDouble(),
+                                          y: int.parse(dailyRecord.stressValue[i]).toDouble(),
                                           color: Colors.lightBlueAccent)],
                                         showingTooltipIndicators: [0]),
                                 ]),
@@ -327,24 +327,24 @@ class VisualState extends State<VisualPage> {
                         padding: EdgeInsets.only(left: 30),
                         child: Row(
                           children: <Widget>[
-                            if (record.drink <= 3)
-                              for (int i = 0; i < record.drink; i++)
+                            if (dailyRecord.drink <= 3)
+                              for (int i = 0; i < dailyRecord.drink; i++)
                                 Icon(Icons.local_bar,
                                     color: Colors.blue),
-                            if (record.drink <= 3)
-                              for (int i = 0; i < 14-record.drink; i++)
+                            if (dailyRecord.drink <= 3)
+                              for (int i = 0; i < 14-dailyRecord.drink; i++)
                                 Icon(Icons.local_bar,
                                     color: Colors.grey),
-                            if (record.drink > 3)
+                            if (dailyRecord.drink > 3)
                               for (int i = 0; i < 3; i++)
                                 Icon(Icons.local_bar,
                                     color: Colors.blue),
-                            if (record.drink > 3)
-                              for (int i = 0; i < record.drink-3; i++)
+                            if (dailyRecord.drink > 3)
+                              for (int i = 0; i < dailyRecord.drink-3; i++)
                                 Icon(Icons.local_bar,
                                     color: Colors.red),
-                            if (record.drink > 3)
-                              for (int i = 0; i < 14 - record.drink; i++)
+                            if (dailyRecord.drink > 3)
+                              for (int i = 0; i < 14 - dailyRecord.drink; i++)
                                 Icon(Icons.local_bar,
                                     color: Colors.grey),
                           ],
@@ -356,7 +356,7 @@ class VisualState extends State<VisualPage> {
                         child:
                           Column(
                             children: <Widget>[
-                              if(record.drink>3)
+                              if(dailyRecord.drink>3)
                                 Text("   음주량 4회 이상!!\n과한 음주는 안 좋아요",
                                   style: TextStyle(
                                       color: Colors.red),)
@@ -544,12 +544,12 @@ class VisualState extends State<VisualPage> {
                                   show: false,
                                 ),
                                 barGroups: [
-                                  for (int i=0; i<record.countDay; i++)
+                                  for (int i=0; i < dailyRecord.countDay; i++)
                                     BarChartGroupData(
                                         x: 0,
                                         barRods: [
                                           BarChartRodData(y: int.parse(
-                                              record.dumpCount[i]).toDouble(),
+                                              dailyRecord.dumpCount[i]).toDouble(),
                                               color: Colors.lightBlueAccent)],
                                         showingTooltipIndicators: [0]),
                                 ]),
@@ -646,12 +646,12 @@ class VisualState extends State<VisualPage> {
                                   show: false,
                                 ),
                                 barGroups: [
-                                  for (int i=0; i<record.countDay; i++)
+                                  for (int i = 0; i < dailyRecord.countDay; i++)
                                     BarChartGroupData(
                                         x: 0,
                                         barRods: [
                                           BarChartRodData(
-                                              y: int.parse(record.comfortValue[i]).toDouble(),
+                                              y: int.parse(dailyRecord.comfortValue[i]).toDouble(),
                                               color: Colors.lightBlueAccent)],
                                         showingTooltipIndicators: [0]),
                                 ]),

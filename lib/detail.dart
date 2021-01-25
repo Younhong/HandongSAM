@@ -1,54 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_app/record.dart';
+import 'package:flutter_app/product.dart';
 import 'package:flutter_app/web.dart';
 
 class DetailPage extends StatefulWidget {
-  final Record record;
+  final Product product;
   final docID;
   final userID;
-  DetailPage({Key key, @required this.record, @required this.userID, @required this.docID}) : super(key: key);
+  DetailPage({Key key, @required this.product, @required this.userID, @required this.docID}) : super(key: key);
 
-  DetailState createState() => DetailState(record, userID, docID);
+  DetailState createState() => DetailState(product, userID, docID);
 }
 
 class DetailState extends State<DetailPage> {
-  final Record record;
+  final Product product;
   final docID;
   final userID;
-  DetailState(this.record, this.userID, this.docID);
+  DetailState(this.product, this.userID, this.docID);
 
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.indigo,
-          title: Text(record.name),
+          title: Text(product.name),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {Navigator.pop(context);},
           ),
         ),
-        body: SnackBarPage(record: record, userID: userID, docID: docID),
+        body: SnackBarPage(product: product, userID: userID, docID: docID),
       ),);
   }
 }
 
 class SnackBarPage extends StatefulWidget {
-  final Record record;
+  final Product product;
   final userID;
   final docID;
-  SnackBarPage({Key key, @required this.record, @required this.userID, @required this.docID}) : super(key: key);
+  SnackBarPage({Key key, @required this.product, @required this.userID, @required this.docID}) : super(key: key);
 
-  SnackBarState createState() => SnackBarState(record, userID, docID);
+  SnackBarState createState() => SnackBarState(product, userID, docID);
 }
 
 class SnackBarState extends State<SnackBarPage>{
-  final Record record;
+  final Product product;
   final userID;
   final docID;
   final title = 'Detail';
-  SnackBarState(this.record, this.userID, this.docID);
+  SnackBarState(this.product, this.userID, this.docID);
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,11 +69,11 @@ class SnackBarState extends State<SnackBarPage>{
   }
 
   Widget _buildListItem(BuildContext context, snapshot) {
-    final Record record = Record.fromSnapshot(snapshot);
+    final Product product = Product.fromSnapshot(snapshot);
     return ListView(
       children: [
         Container(
-          child: Image.network(record.image, fit: BoxFit.contain, height: 300),
+          child: Image.network(product.image, fit: BoxFit.contain, height: 300),
         ),
         Container(
           padding: const EdgeInsets.all(20),
@@ -88,7 +88,7 @@ class SnackBarState extends State<SnackBarPage>{
                         width: 250,
                         padding: const EdgeInsets.only(left:10, top:10, bottom:3),
                         child: Text(
-                          record.name,
+                          product.name,
                           style: TextStyle(
                             color: Colors.indigo,
                             fontWeight: FontWeight.bold,
@@ -102,7 +102,7 @@ class SnackBarState extends State<SnackBarPage>{
                       child: Row(
                         children: <Widget>[
                           Container(
-                            child: Text('${record.price}',
+                            child: Text('${product.price}',
                               style: TextStyle(fontSize: 14),
                             ),),
                         ],
@@ -110,7 +110,7 @@ class SnackBarState extends State<SnackBarPage>{
                     ),
                     Container(
                       padding: const EdgeInsets.only(left:10, top:3, bottom:3),
-                      child: Text(record.description,
+                      child: Text(product.description,
                           style: TextStyle(fontSize: 14)),
                     ),
                     SizedBox(height: 30),

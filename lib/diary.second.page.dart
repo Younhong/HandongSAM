@@ -5,23 +5,23 @@ import 'package:flutter_app/diary.third.page.dart';
 class DiarySecondPage extends StatefulWidget {
   final stressValue, drink, sleep;
   final alarmTime, userID, email, url;
-  final DailyRecord record;
-  DiarySecondPage({Key key, this.stressValue, this.drink, this.sleep, this.userID, this.email, this.url, this.alarmTime, this.record}) : super(key: key);
-  DiarySecondState createState() => DiarySecondState(stressValue, drink, sleep, userID, email, url, alarmTime, record);
+  final DailyRecord dailyRecord;
+  DiarySecondPage({Key key, this.stressValue, this.drink, this.sleep, this.userID, this.email, this.url, this.alarmTime, this.dailyRecord}) : super(key: key);
+  DiarySecondState createState() => DiarySecondState(stressValue, drink, sleep, userID, email, url, alarmTime, dailyRecord);
 }
 
 class DiarySecondState extends State <DiarySecondPage> {
   final stressValue, drink, sleep;
   final alarmTime, userID, email, url;
-  final DailyRecord record;
-  DiarySecondState(this.stressValue, this.drink, this.sleep, this.userID, this.email, this.url, this.alarmTime, this.record);
+  final DailyRecord dailyRecord;
+  DiarySecondState(this.stressValue, this.drink, this.sleep, this.userID, this.email, this.url, this.alarmTime, this.dailyRecord);
 
   String _morning = '';
   String _lunch = '';
   String _dinner = '';
 
   Widget build(BuildContext context) {
-    String title = (record.countDay+1).toString() + "일차 장일기 2/4";
+    String title = (dailyRecord.countDay+1).toString() + "일차 장일기 2/4";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
@@ -439,7 +439,7 @@ class DiarySecondState extends State <DiarySecondPage> {
                         stressValue: stressValue, drink:drink, sleep: sleep,
                         morning: _morning, lunch: _lunch, dinner: _dinner,
                         userID: userID, email: email, url: url,
-                        alarmTime: alarmTime, record: record)
+                        alarmTime: alarmTime, dailyRecord: dailyRecord)
               )),
               textColor: Colors.white,
               child: Container(

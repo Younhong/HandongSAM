@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/home.dart';
-import 'package:flutter_app/daily.record.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -17,7 +16,6 @@ class _AlarmPageState extends State<AlarmPage> {
   final email;
   final url;
   final userID;
-  DailyRecord record;
 
   DateTime _dateTime = DateTime.now();
 

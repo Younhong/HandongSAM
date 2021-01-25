@@ -3,11 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app/daily.record.dart';
 import 'package:flutter_app/detail.dart';
-import 'package:flutter_app/diary.dart';
+import 'package:flutter_app/diary.first.page.dart';
 import 'package:flutter_app/intro.dart';
 import 'package:flutter_app/login.dart';
 import 'package:flutter_app/profile.dart';
-import 'package:flutter_app/record.dart';
+import 'package:flutter_app/product.dart';
 import 'package:flutter_app/visual.dart';
 import 'package:flutter_app/web.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
@@ -204,7 +204,7 @@ class HomeState extends State<HomePage> {
   }
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot data){
-    final record = Record.fromSnapshot(data);
+    final product = Product.fromSnapshot(data);
     return Container(
       child: Card(
         clipBehavior: Clip.antiAlias,
@@ -213,7 +213,7 @@ class HomeState extends State<HomePage> {
           children: <Widget>[
             Container(
               child: Image.network(
-                '${record.image}',
+                '${product.image}',
                 fit: BoxFit.contain,
                 width: 200,
                 height: 100,
@@ -222,7 +222,7 @@ class HomeState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.only(top:10, left: 20),
               child: Text(
-                record.name,
+                product.name,
                 style: TextStyle(
                     fontSize: 12.0, fontWeight: FontWeight.bold),
                 softWrap: true,
@@ -233,7 +233,7 @@ class HomeState extends State<HomePage> {
                   children: <Widget>[
                     Container(
                       child: Text(
-                        record.price.toString(),
+                        product.price.toString(),
                         style: TextStyle(fontSize: 9.0),
                         softWrap: true,
                       ),)
@@ -250,7 +250,7 @@ class HomeState extends State<HomePage> {
                     onPressed: () => Navigator.push(context,
                         MaterialPageRoute(builder: (context) =>
                             DetailPage(
-                                record: record,
+                                product: product,
                                 userID: userID,
                                 docID: data.documentID))),
                   ),
@@ -479,7 +479,12 @@ class HomeState extends State<HomePage> {
                       },);
                   }
                   else Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => DiaryPage(userID: userID, email: email, url: url, alarmTime: alarmTime, record: dailyRecord)));
+                      builder: (context) => DiaryFirstPage(
+                          userID: userID,
+                          email: email,
+                          url: url,
+                          alarmTime: alarmTime,
+                          dailyRecord: dailyRecord)));
                 }
                 else if (dailyRecord.countDay >= 14) {
                   showDialog<void>(
@@ -523,7 +528,7 @@ class HomeState extends State<HomePage> {
                                                       email: email,
                                                       url: url,
                                                       alarmTime: alarmTime,
-                                                      record: dailyRecord)));
+                                                      dailyRecord: dailyRecord)));
                                         }
                                     ),
                                   ),
@@ -569,12 +574,12 @@ class HomeState extends State<HomePage> {
                 }
                 else
                   Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => DiaryPage(
+                      builder: (context) => DiaryFirstPage(
                           userID: userID,
                           email: email,
                           url: url,
                           alarmTime: alarmTime,
-                          record: dailyRecord)));
+                          dailyRecord: dailyRecord)));
               }
           ),
         ),
@@ -648,7 +653,7 @@ class HomeState extends State<HomePage> {
                                                     email: email,
                                                     url: url,
                                                     alarmTime: alarmTime,
-                                                    record: dailyRecord)));
+                                                    dailyRecord: dailyRecord)));
                                       }
                                   ),
                                 ),
@@ -664,7 +669,7 @@ class HomeState extends State<HomePage> {
                             email: email,
                             url: url,
                             alarmTime: alarmTime,
-                            record: dailyRecord)));
+                            dailyRecord: dailyRecord)));
                 }
                 else {
                   showDialog<void>(
@@ -697,12 +702,12 @@ class HomeState extends State<HomePage> {
                                     onPressed: () {
                                       Navigator.push(context, MaterialPageRoute(
                                           builder: (context) =>
-                                              DiaryPage(
+                                              DiaryFirstPage(
                                                   userID: userID,
                                                   email: email,
                                                   url: url,
                                                   alarmTime: alarmTime,
-                                                  record: dailyRecord)));
+                                                  dailyRecord: dailyRecord)));
                                     }
                                 ),
                               ),

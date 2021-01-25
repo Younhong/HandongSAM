@@ -8,9 +8,9 @@ class DiaryFourthPage extends StatefulWidget {
   final bioEat, eatenHour;
   final userID, email, url;
   final alarmTime;
-  final DailyRecord record;
-  DiaryFourthPage({Key key, this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.bioEat, this.eatenHour, this.userID, this.email, this.url, this.alarmTime, this.record}) : super(key: key);
-  DiaryFourthState createState() => DiaryFourthState(stressValue, drink, sleep, morning, lunch, dinner, bioEat, eatenHour, userID, email, url, alarmTime, record);
+  final DailyRecord dailyRecord;
+  DiaryFourthPage({Key key, this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.bioEat, this.eatenHour, this.userID, this.email, this.url, this.alarmTime, this.dailyRecord}) : super(key: key);
+  DiaryFourthState createState() => DiaryFourthState(stressValue, drink, sleep, morning, lunch, dinner, bioEat, eatenHour, userID, email, url, alarmTime, dailyRecord);
 }
 
 class DiaryFourthState extends State <DiaryFourthPage> {
@@ -19,8 +19,8 @@ class DiaryFourthState extends State <DiaryFourthPage> {
   final bioEat, eatenHour;
   final userID, email, url;
   final alarmTime;
-  final DailyRecord record;
-  DiaryFourthState(this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.bioEat, this.eatenHour, this.userID, this.email, this.url, this.alarmTime, this.record);
+  final DailyRecord dailyRecord;
+  DiaryFourthState(this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.bioEat, this.eatenHour, this.userID, this.email, this.url, this.alarmTime, this.dailyRecord);
 
   double _comfortValue = 0.0;
   String _dumpCount = '';
@@ -29,7 +29,7 @@ class DiaryFourthState extends State <DiaryFourthPage> {
   void _setValue2(double value) => setState(() => _comfortValue = value);
 
   Widget build(BuildContext context) {
-    String title = (record.countDay+1).toString() + "일차 장일기 4/4";
+    String title = (dailyRecord.countDay+1).toString() + "일차 장일기 4/4";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
@@ -297,7 +297,7 @@ class DiaryFourthState extends State <DiaryFourthPage> {
                           bioEat: bioEat, eatenHour: eatenHour,
                           dumpCount: _dumpCount, comfortValue: (_comfortValue * 4 + 1).round().toString(), dumpStatus: _dumpStatus,
                           userID: userID, email: email, url: url,
-                          alarmTime: alarmTime, record: record)));
+                          alarmTime: alarmTime, dailyRecord: dailyRecord)));
               },
               textColor: Colors.white,
               child: Container(

@@ -10,16 +10,16 @@ class ResultPage extends StatefulWidget {
   final userID, email, url;
   final dumpCount, comfortValue, dumpStatus;
   final alarmTime;
-  final DailyRecord record;
+  final DailyRecord dailyRecord;
   ResultPage({Key key, this.stressValue, this.drink, this.sleep, this.morning,
     this.lunch, this.dinner, this.bioEat, this.eatenHour,
     this.dumpCount, this.comfortValue, this.dumpStatus, this.userID, this.email,
-    this.url, this.alarmTime, this.record}) : super(key: key);
+    this.url, this.alarmTime, this.dailyRecord}) : super(key: key);
 
   @override
   _ResultPageState createState() => _ResultPageState(
       stressValue, drink, sleep, morning, lunch, dinner, bioEat, eatenHour,
-      dumpCount, comfortValue, dumpStatus, userID, email, url, alarmTime, record);
+      dumpCount, comfortValue, dumpStatus, userID, email, url, alarmTime, dailyRecord);
 }
 
 class _ResultPageState extends State<ResultPage> {
@@ -29,11 +29,11 @@ class _ResultPageState extends State<ResultPage> {
   final userID, email, url;
   final dumpCount, comfortValue, dumpStatus;
   final alarmTime;
-  final DailyRecord record;
+  final DailyRecord dailyRecord;
   _ResultPageState(
       this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner,
       this.bioEat, this.eatenHour, this.dumpCount, this.comfortValue, this.dumpStatus,
-      this.userID, this.email, this.url, this.alarmTime, this.record);
+      this.userID, this.email, this.url, this.alarmTime, this.dailyRecord);
   @override
 
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class _ResultPageState extends State<ResultPage> {
 
     String timeMatch = "";
 
-    if (record.alarmTime.toDate().difference(eatenHour).inHours%24 > 1) {
+    if (dailyRecord.alarmTime.toDate().difference(eatenHour).inHours%24 > 1) {
       timeMatch = "시간 꼭 지켜주세요";
     }
     else {
@@ -85,7 +85,7 @@ class _ResultPageState extends State<ResultPage> {
     else if(dinner == "6") { _dinner = "지방"; }
     else { _dinner = "단백질"; }
 
-    String title = (record.countDay+1).toString() + "일차 설문조사 결과";
+    String title = (dailyRecord.countDay+1).toString() + "일차 설문조사 결과";
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.indigo,
@@ -333,28 +333,28 @@ class _ResultPageState extends State<ResultPage> {
                     textAlign: TextAlign.center,),
                 ),
                 onPressed: () {
-                  if (record.countDay == 0) {
-                    record.reference.updateData({
+                  if (dailyRecord.countDay == 0) {
+                    dailyRecord.reference.updateData({
                       "initialTime": DateTime.now(),
                     });
                   }
-                  else if (record.countDay == 13) {
-                    record.reference.updateData({
+                  else if (dailyRecord.countDay == 13) {
+                    dailyRecord.reference.updateData({
                       "lastSubmitTime": DateTime.now(),
                     });
                   }
-                  record.reference.updateData({
-                    "stressValue": record.stressValue + stressValue,
+                  dailyRecord.reference.updateData({
+                    "stressValue": dailyRecord.stressValue + stressValue,
                     "drink": FieldValue.increment(int.parse(drink)),
                     "sleep": FieldValue.increment(int.parse(sleep)),
-                    "morning": record.morning + morning,
-                    "lunch": record.lunch + lunch,
-                    "dinner": record.dinner + dinner,
+                    "morning": dailyRecord.morning + morning,
+                    "lunch": dailyRecord.lunch + lunch,
+                    "dinner": dailyRecord.dinner + dinner,
                     "bioEat": FieldValue.increment(int.parse(bioEat)),
                     "dumpStatus": FieldValue.increment(int.parse(
                         dumpStatus)),
-                    "comfortValue": record.comfortValue + comfortValue,
-                    "dumpCount": record.dumpCount + dumpCount,
+                    "comfortValue": dailyRecord.comfortValue + comfortValue,
+                    "dumpCount": dailyRecord.dumpCount + dumpCount,
                     "countDay": FieldValue.increment(1),
                     "submitTime": DateTime.now(),
                   });

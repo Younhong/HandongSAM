@@ -7,17 +7,17 @@ class DiaryThirdPage extends StatefulWidget {
   final stressValue, drink, sleep;
   final morning, lunch, dinner;
   final alarmTime, userID, email, url;
-  final DailyRecord record;
-  DiaryThirdPage({Key key, this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.userID, this.email, this.url, this.alarmTime, this.record}) : super(key: key);
-  DiaryThirdState createState() => DiaryThirdState(stressValue, drink, sleep, morning, lunch, dinner, userID, email, url, alarmTime, record);
+  final DailyRecord dailyRecord;
+  DiaryThirdPage({Key key, this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.userID, this.email, this.url, this.alarmTime, this.dailyRecord}) : super(key: key);
+  DiaryThirdState createState() => DiaryThirdState(stressValue, drink, sleep, morning, lunch, dinner, userID, email, url, alarmTime, dailyRecord);
 }
 
 class DiaryThirdState extends State <DiaryThirdPage> {
   final stressValue, drink, sleep;
   final alarmTime, userID, email, url;
   final morning,lunch, dinner;
-  final DailyRecord record;
-  DiaryThirdState(this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.userID, this.email, this.url, this.alarmTime, this.record);
+  final DailyRecord dailyRecord;
+  DiaryThirdState(this.stressValue, this.drink, this.sleep, this.morning, this.lunch, this.dinner, this.userID, this.email, this.url, this.alarmTime, this.dailyRecord);
 
   String _bioEat = '';
   String eatHourEval = "";
@@ -25,7 +25,7 @@ class DiaryThirdState extends State <DiaryThirdPage> {
   DateTime _eatenHour = DateTime.now();
 
   Widget build(BuildContext context) {
-    String title = (record.countDay+1).toString() + "일차 장일기 3/4";
+    String title = (dailyRecord.countDay+1).toString() + "일차 장일기 3/4";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
@@ -93,7 +93,7 @@ class DiaryThirdState extends State <DiaryThirdPage> {
                         morning: morning, lunch: lunch, dinner: dinner,
                         bioEat: _bioEat, eatenHour: _eatenHour,
                         userID: userID, email: email, url: url,
-                        alarmTime: alarmTime, record: record)
+                        alarmTime: alarmTime, dailyRecord: dailyRecord)
               )),
               textColor: Colors.white,
               child: Container(
